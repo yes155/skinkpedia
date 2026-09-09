@@ -1,6 +1,7 @@
 {% extends "base.html" %}{% block content %}
 <div class="container article-shell">
-  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a>{% for item in breadcrumbs %}<span aria-hidden="true">/</span>{% if loop.last %}<span aria-current="page">{{ item.title }}</span>{% else %}<a href="{{ item.url }}">{{ item.title }}</a>{% endif %}{% endfor %}</nav>
+  {% set visible_breadcrumbs = breadcrumbs[-2:] if breadcrumbs|length > 2 else breadcrumbs %}
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a>{% for item in visible_breadcrumbs %}<span aria-hidden="true">/</span>{% if loop.last %}<span aria-current="page">{{ item.title }}</span>{% else %}<a href="{{ item.url }}">{{ item.title }}</a>{% endif %}{% endfor %}</nav>
   <article class="article-layout">
     <header class="article-header reading-width">
       {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}

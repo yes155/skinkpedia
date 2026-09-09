@@ -22,6 +22,7 @@
   <meta name="twitter:image" content="{{ og_image_abs }}">
   <meta name="twitter:image:alt" content="{{ og_image_alt }}">
   <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/nav-dropdown.css">
   {% if schema_json %}<script type="application/ld+json">{{ schema_json|safe }}</script>{% endif %}
 </head>
 <body>
@@ -31,12 +32,67 @@
     <a class="brand" href="/" aria-label="Skinkpedia home"><span class="brand-mark" aria-hidden="true">S</span><span>Skinkpedia</span></a>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
     <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
-      <a href="/skinks/">Skinks</a>
-      <a href="/pet-skinks/">Pet Skinks</a>
-      <a href="/skink-care/">Care</a>
-      <a href="/wild-skinks/north-america/">Wild Skinks</a>
-      <a href="/skink-biology/">Biology</a>
-      <a href="/about/">About</a>
+      <a class="nav-top-link" href="/skinks/">Skinks</a>
+
+      <div class="nav-group">
+        <div class="nav-group-head"><a class="nav-top-link" href="/pet-skinks/">Pet Skinks</a><button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="nav-pets" aria-label="Open Pet Skinks menu"><span aria-hidden="true">▾</span></button></div>
+        <div id="nav-pets" class="nav-dropdown">
+          <a href="/pet-skinks/">All Pet Skinks</a>
+          <a href="/pet-skinks/blue-tongue-skink/">Blue-Tongue Skink</a>
+          <a href="/pet-skinks/red-eyed-crocodile-skink/">Red-Eyed Crocodile Skink</a>
+          <a href="/pet-skinks/fire-skink/">Fire Skink</a>
+          <a href="/pet-skinks/emerald-tree-skink/">Emerald Tree Skink</a>
+          <a href="/pet-skinks/pink-tongued-skink/">Pink-Tongued Skink</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-head"><a class="nav-top-link" href="/skink-care/">Care</a><button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="nav-care" aria-label="Open Care menu"><span aria-hidden="true">▾</span></button></div>
+        <div id="nav-care" class="nav-dropdown">
+          <a href="/skink-care/">Care Guide</a>
+          <a href="/skink-care/enclosure-setup/">Enclosure Setup</a>
+          <a href="/skink-care/diet/">Diet & Feeding</a>
+          <a href="/skink-care/exercise-enrichment/">Exercise & Enrichment</a>
+          <a href="/skink-care/handling-bites-temperament/">Handling & Temperament</a>
+          <a href="/skink-care/health/">Health</a>
+          <a href="/skink-care/supplies-checklist/">Supplies Checklist</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-head"><a class="nav-top-link" href="/wild-skinks/north-america/">Wild Skinks</a><button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="nav-wild" aria-label="Open Wild Skinks menu"><span aria-hidden="true">▾</span></button></div>
+        <div id="nav-wild" class="nav-dropdown nav-dropdown-wide">
+          <a href="/wild-skinks/north-america/">North American Skinks</a>
+          <a href="/wild-skinks/blue-tailed-skink/">Blue-Tailed Skink</a>
+          <a href="/wild-skinks/five-lined-skink/">Five-Lined Skink</a>
+          <a href="/wild-skinks/broad-headed-skink/">Broad-Headed Skink</a>
+          <a href="/wild-skinks/western-skink/">Western Skink</a>
+          <a href="/wild-skinks/california/">California</a>
+          <a href="/wild-skinks/florida/">Florida</a>
+          <a href="/wild-skinks/texas/">Texas</a>
+          <a href="/wild-skinks/north-carolina/">North Carolina</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-head"><a class="nav-top-link" href="/skink-biology/">Biology</a><button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="nav-biology" aria-label="Open Biology menu"><span aria-hidden="true">▾</span></button></div>
+        <div id="nav-biology" class="nav-dropdown">
+          <a href="/skink-biology/">Skink Biology</a>
+          <a href="/skink-biology/reproduction/">Reproduction</a>
+          <a href="/skink-biology/tail-drop-regrowth/">Tail Drop & Regrowth</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-head"><a class="nav-top-link" href="/about/">About</a><button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="nav-about" aria-label="Open About menu"><span aria-hidden="true">▾</span></button></div>
+        <div id="nav-about" class="nav-dropdown nav-dropdown-right">
+          <a href="/about/">About Skinkpedia</a>
+          <a href="/editorial-policy/">Editorial Policy</a>
+          <a href="/sources-research-methodology/">Sources & Methodology</a>
+          <a href="/corrections-policy/">Corrections Policy</a>
+          <a href="/contact/">Contact</a>
+        </div>
+      </div>
     </nav>
   </div>
 </header>
@@ -52,7 +108,12 @@
 </footer>
 <script>
 const b=document.querySelector('.menu-button'),n=document.querySelector('#primary-nav');
-if(b&&n){b.addEventListener('click',()=>{const x=b.getAttribute('aria-expanded')==='true',open=!x;b.setAttribute('aria-expanded',String(open));b.textContent=open?'Close':'Menu';n.classList.toggle('is-open',open);});}
+const groups=[...document.querySelectorAll('.nav-group')];
+function closeDropdowns(except=null){groups.forEach(g=>{if(g===except)return;g.classList.remove('is-open');const t=g.querySelector('.nav-dropdown-toggle');if(t)t.setAttribute('aria-expanded','false');});}
+groups.forEach(g=>{const t=g.querySelector('.nav-dropdown-toggle');if(!t)return;t.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const open=!g.classList.contains('is-open');closeDropdowns(g);g.classList.toggle('is-open',open);t.setAttribute('aria-expanded',String(open));});});
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-group'))closeDropdowns();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDropdowns();});
+if(b&&n){b.addEventListener('click',()=>{const x=b.getAttribute('aria-expanded')==='true',open=!x;b.setAttribute('aria-expanded',String(open));b.textContent=open?'Close':'Menu';n.classList.toggle('is-open',open);if(!open)closeDropdowns();});}
 if(window.matchMedia('(max-width: 960px)').matches){document.querySelectorAll('.toc details[open]').forEach(d=>d.removeAttribute('open'));}
 </script>
 </body>
