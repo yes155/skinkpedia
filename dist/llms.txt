@@ -1,0 +1,14 @@
+# Skinkpedia
+
+Skinkpedia is an independent educational resource about skinks (family Scincidae), including pet care, species identification, wild skinks, biology and natural history.
+
+## Key sections
+- https://skinkpedia.online/skinks/ — skink family overview
+- https://skinkpedia.online/pet-skinks/ — pet skink comparison and ownership
+- https://skinkpedia.online/skink-care/ — husbandry framework
+- https://skinkpedia.online/wild-skinks/north-america/ — North American species and regional identification
+- https://skinkpedia.online/skink-biology/ — anatomy, classification and adaptations
+- https://skinkpedia.online/editorial-policy/ — editorial standards
+- https://skinkpedia.online/sources-research-methodology/ — source methodology
+
+Exact care values are species-specific. Health content is educational and does not replace veterinary care.

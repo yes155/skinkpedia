@@ -1,0 +1,5 @@
+jinja2
+mistune
+pyyaml
+beautifulsoup4
+pillow

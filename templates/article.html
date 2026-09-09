@@ -1,0 +1,20 @@
+{% extends "base.html" %}{% block content %}
+<div class="container article-shell">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a>{% for item in breadcrumbs %}<span aria-hidden="true">/</span>{% if loop.last %}<span aria-current="page">{{ item.title }}</span>{% else %}<a href="{{ item.url }}">{{ item.title }}</a>{% endif %}{% endfor %}</nav>
+  <article class="article-layout">
+    <header class="article-header reading-width">
+      {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
+      <h1>{{ title }}</h1>
+      {% if scientific_name %}<p class="scientific-name"><em>{{ scientific_name }}</em></p>{% endif %}
+      <p class="byline">Research and written by <a href="/authors/farrukh-abdullah/">Farrukh Abdullah</a></p>
+    </header>
+    <figure class="article-hero"><img src="{{ hero_image }}" width="1600" height="900" alt="{{ hero_alt }}" loading="eager" fetchpriority="high"></figure>
+    <div class="article-main-grid">
+      {% if toc %}<aside class="toc" aria-label="On this page"><details open><summary>On this page</summary><ol>{% for h in toc %}<li class="toc-level-{{ h.level }}"><a href="#{{ h.id }}">{{ h.text }}</a></li>{% endfor %}</ol></details></aside>{% endif %}
+      <div class="article-body reading-width">{{ body_html|safe }}</div>
+    </div>
+    {% if children %}<section class="related-block"><div class="section-heading"><p class="eyebrow">Continue exploring</p><h2>Related guides</h2></div><div class="card-grid">{% for c in children %}<article class="link-card"><h3><a href="{{ c.url }}">{{ c.title }}</a></h3><p>{{ c.description }}</p></article>{% endfor %}</div></section>{% endif %}
+    <aside class="author-box"><div class="author-avatar" aria-hidden="true">FA</div><div><p class="eyebrow">About the author</p><h2><a href="/authors/farrukh-abdullah/">Farrukh Abdullah</a></h2><p>Founder, publisher and primary research/editorial author of Skinkpedia. Editorial claims are grounded in external scientific, veterinary, government and specialist sources.</p></div></aside>
+  </article>
+</div>
+{% endblock %}

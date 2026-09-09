@@ -1,0 +1,5 @@
+SITE_NAME = "Skinkpedia"
+SITE_URL = "https://skinkpedia.online"
+AUTHOR_NAME = "Farrukh Abdullah"
+AUTHOR_URL = "/authors/farrukh-abdullah/"
+DEFAULT_OG_IMAGE = "/assets/images/heroes/core-001-skink-overview-hero.webp"
