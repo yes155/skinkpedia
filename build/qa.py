@@ -6,8 +6,10 @@ ROOT=Path(__file__).resolve().parents[1]; DIST=ROOT/'dist'
 html=list(DIST.rglob('*.html'))
 errs=[]
 article_pages=0; related_blocks=0; reference_pages=0
-# expected: home + 53 + 7 trust + 404
-if len(html)!=62: errs.append(f'HTML file count expected 62, found {len(html)}')
+source_articles=list((ROOT/'content'/'articles').glob('*.md'))
+source_trust=list((ROOT/'content'/'trust').glob('*.md'))
+expected_html=1+len(source_articles)+len(source_trust)+1  # homepage + articles + trust + 404
+if len(html)!=expected_html: errs.append(f'HTML file count expected {expected_html}, found {len(html)}')
 paths=set()
 for f in html:
     rel=f.relative_to(DIST)
@@ -72,9 +74,10 @@ for f in html:
                                 errs.append(f'{f}: live external link inside References: {href}')
                     node=nxt
         if page_has_refs: reference_pages += 1
-# hero inventory
+# hero inventory: one unique 1600x900 WEBP hero per article
 heroes=list((DIST/'assets/images/heroes').glob('*.webp'))
-if len(heroes)!=53: errs.append(f'Hero count expected 53, found {len(heroes)}')
+expected_heroes=len(source_articles)
+if len(heroes)!=expected_heroes: errs.append(f'Hero count expected {expected_heroes}, found {len(heroes)}')
 for p in heroes:
     im=Image.open(p)
     if im.size!=(1600,900): errs.append(f'{p}: dimensions {im.size}')
