@@ -31,8 +31,9 @@ for f in html:
     for im in s.find_all('img'):
         if not im.get('alt') and im.get('alt')!='': errs.append(f'{f}: image missing alt {im.get("src")}')
         src=im.get('src','')
-        if src.startswith('/assets/'):
-            asset=DIST/src.lstrip('/')
+        clean_src=src.split('#')[0].split('?')[0]
+        if clean_src.startswith('/assets/'):
+            asset=DIST/clean_src.lstrip('/')
             if not asset.exists(): errs.append(f'{f}: missing asset {src}')
 # hero inventory
 heroes=list((DIST/'assets/images/heroes').glob('*.webp'))
