@@ -5,6 +5,7 @@ import re, sys
 ROOT=Path(__file__).resolve().parents[1]; DIST=ROOT/'dist'
 html=list(DIST.rglob('*.html'))
 errs=[]
+article_pages=0; related_blocks=0; reference_pages=0
 # expected: home + 53 + 7 trust + 404
 if len(html)!=62: errs.append(f'HTML file count expected 62, found {len(html)}')
 paths=set()
@@ -35,6 +36,42 @@ for f in html:
         if clean_src.startswith('/assets/'):
             asset=DIST/clean_src.lstrip('/')
             if not asset.exists(): errs.append(f'{f}: missing asset {src}')
+
+    article=s.select_one('.article-layout')
+    if article:
+        article_pages += 1
+        related=article.select_one('.related-block')
+        if not related:
+            errs.append(f'{f}: missing Related guides block')
+        else:
+            related_blocks += 1
+            related_links=related.select('.link-card a[href^="/"]')
+            if len(related_links)<2: errs.append(f'{f}: Related guides has fewer than 2 internal cards')
+
+        body=s.select_one('.article-body')
+        page_has_refs=False
+        if body:
+            for heading in body.find_all(['h2','h3']):
+                label=heading.get_text(' ',strip=True).lower()
+                if not (label=='references' or label.startswith('references ') or label in {'sources','sources & references','sources and references'}):
+                    continue
+                page_has_refs=True
+                level=int(heading.name[1])
+                node=heading.next_sibling
+                while node is not None:
+                    nxt=node.next_sibling
+                    if getattr(node,'name',None) in {'h2','h3'} and int(node.name[1])<=level:
+                        break
+                    if getattr(node,'find_all',None):
+                        links=[]
+                        if getattr(node,'name',None)=='a': links.append(node)
+                        links.extend(node.find_all('a',href=True))
+                        for a in links:
+                            href=a.get('href','')
+                            if href.startswith(('http://','https://','//')):
+                                errs.append(f'{f}: live external link inside References: {href}')
+                    node=nxt
+        if page_has_refs: reference_pages += 1
 # hero inventory
 heroes=list((DIST/'assets/images/heroes').glob('*.webp'))
 if len(heroes)!=53: errs.append(f'Hero count expected 53, found {len(heroes)}')
@@ -47,6 +84,7 @@ for f in html:
     for bad in ['notebook.google.com','[SOURCE NEEDED BEFORE PUBLICATION]','file://','C:\\','D:\\']:
         if bad.lower() in txt.lower(): errs.append(f'{f}: banned artifact {bad}')
 print('QA', 'PASS' if not errs else 'FAIL')
+print('Article pages:',article_pages,'Related blocks:',related_blocks,'Reference sections:',reference_pages)
 if errs:
     for e in errs[:200]: print('-',e)
     sys.exit(1)
