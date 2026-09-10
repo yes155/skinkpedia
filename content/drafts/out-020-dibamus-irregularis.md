@@ -1,6 +1,6 @@
 ---
 page_id: "OUT-020"
-title: "Dibamus irregularis: Chu Yang Sin Blind Skink from Vietnam"
+title: "Dibamus irregularis: New Blind Skink Species from Vietnam"
 url: "/skink-biology/dibamus-irregularis/"
 parent_id: "OUT-015"
 tier: "Outer"
@@ -8,149 +8,120 @@ section: "Skink Biology"
 template: "Species / Taxonomy Guide"
 author: "Farrukh Abdullah"
 hero_image: "/assets/images/heroes/out-020-dibamus-irregularis-hero.webp"
-hero_alt: "Dibamus irregularis in pine-litter habitat in Chu Yang Sin National Park, Vietnam"
+hero_alt: "Dibamus irregularis moving through pine litter and soil in Chu Yang Sin National Park, Vietnam"
 draft: true
 ---
 
-# Dibamus irregularis: Chu Yang Sin Blind Skink from Vietnam
+# Dibamus irregularis: New Blind Skink Species from Vietnam
 
-**Dibamus irregularis is a burrowing dibamid lizard described in 2026 from Chu Yang Sin National Park in Dak Lak Province, southern Vietnam.** Its suggested English common name is **Chu Yang Sin Blind Skink**, but *Dibamus irregularis* belongs to the family **Dibamidae**, not the true-skink family **Scincidae**.
+**Dibamus irregularis is a newly described burrowing lizard from Chu Yang Sin National Park in Dak Lak Province, Vietnam.** The species was formally described in February 2026 and its suggested English common name is **Chu Yang Sin Blind Skink**. Despite that common name, *Dibamus irregularis* belongs to **Dibamidae**, not the true-skink family **Scincidae**.
 
-The distinction matters on a skink-focused site. *Dibamus* species are often called blind skinks because of their worm-like bodies, reduced eyes and fossorial lifestyle, yet they form a different lizard lineage from the animals covered by the [skink family overview](/skinks/).
+The 2026 description is notable for two reasons: it documents a distinct *Dibamus* lineage using morphology and mitochondrial DNA, and it reports the first complete two-egg clutch described for the genus. This page covers taxonomy, identification, range, habitat and natural history; it does not provide captive-care advice.
 
 | Attribute | *Dibamus irregularis* |
 | --- | --- |
 | Family | Dibamidae |
 | Genus | *Dibamus* |
 | Suggested English name | Chu Yang Sin Blind Skink |
-| Described | 2026 |
-| Known locality | Chu Yang Sin National Park, Dak Lak Province, Vietnam |
-| Maximum reported snout–vent length | 147 mm (5.8 in) |
+| Formal description | February 26, 2026 |
+| Confirmed range | Chu Yang Sin National Park, Dak Lak Province, Vietnam |
 | Type series | 12 specimens |
-| Known reproduction | Two-egg clutch documented |
+| Maximum reported snout–vent length | 147 mm (5.8 in) |
+| Eye condition | Strongly reduced; eyes barely visible beneath an ocular scale in the holotype |
+| Reproduction documented | One complete clutch of two eggs |
 
 ## What is Dibamus irregularis?
 
-**Dibamus irregularis is a newly described species of *Dibamus*, a genus of highly fossorial lizards in the family Dibamidae.** Kliukin and colleagues described the species on February 26, 2026 after comparing 12 specimens from Chu Yang Sin National Park with other recognized *Dibamus* species.
+**Dibamus irregularis is a species of highly fossorial lizard in the family Dibamidae.** Kliukin and colleagues described it from 12 adult and subadult specimens collected in Chu Yang Sin National Park and compared the population with other recognized *Dibamus* species.
 
-The study combined external anatomy, skeletal morphology and mitochondrial DNA. The authors analyzed three mitochondrial markers—16S rRNA, ND2 and COI—rather than relying on appearance alone.
-
-The description increased the genus *Dibamus* to 30 recognized species at the time of publication and identified *D. irregularis* as the tenth *Dibamus* species recorded from Vietnam.
+The authors used both external and skeletal morphology plus three mitochondrial markers—16S rRNA, ND2 and COI. At the time of publication, the description brought the genus *Dibamus* to 30 recognized species and made *D. irregularis* the tenth species of the genus recorded from Vietnam.
 
 ## Is Dibamus irregularis a true skink?
 
-**No. *Dibamus irregularis* is not a true skink in the family Scincidae.** It is a dibamid lizard in the family Dibamidae.
+**No. *Dibamus irregularis* is not a true skink in Scincidae.** It belongs to the separate lizard family **Dibamidae**.
 
-“Blind skink” is a common name used for *Dibamus* and other dibamids. It does not place these lizards inside Scincidae. True skinks such as *Scincella*, *Plestiodon*, *Tiliqua* and many other genera belong to a separate family.
+“Blind skink” is a conventional common name applied to *Dibamus*. It does not indicate membership in Scincidae. True skinks such as *Scincella*, *Plestiodon* and *Tiliqua* belong to Scincidae, while *Dibamus* represents a different squamate lineage.
 
-Both groups are lizards in the order Squamata, and both include elongated or burrowing forms, but their family-level classification is different. For the defining taxonomy of true skinks, see [Skink Biology](/skink-biology/).
+The distinction is important because elongated bodies, reduced limbs and burrowing habits have evolved in more than one lizard lineage. Similar body form does not establish close family-level relationship. See the [skink biology guide](/skink-biology/) for the defining context of Scincidae.
 
-## Is the Chu Yang Sin Blind Skink completely blind?
+## Where is Dibamus irregularis found?
 
-**The published description documents strongly reduced eyes, but it does not demonstrate that *Dibamus irregularis* has no visual function.** In the holotype, the eyes were barely visible beneath a single ocular scale, and the family is characterized by eye reduction associated with a burrowing lifestyle.
+**Confirmed records of *Dibamus irregularis* come from two localities about 1 km apart inside Chu Yang Sin National Park, Dak Lak Province, southern Vietnam.** The type locality lies on the northern slopes of Mount Chu Yang Sin at 1,338 m above sea level.
 
-For that reason, “blind skink” should be treated as a conventional common name rather than a literal claim that the species has been experimentally shown to lack vision.
+Other specimens were recorded from lower and intermediate elevations within the same protected area. The paper reports animals on open trail sections and forest edges around 760–840 m and on shaded slopes and dry stream beds around 1,140–1,340 m.
 
-## Where was Dibamus irregularis discovered?
+The known habitat is mid-elevation montane coniferous forest dominated by *Pinus kesiya*. Thick pine litter covers much of the ground, while rocks and boulders create sheltered microhabitats.
 
-**Dibamus irregularis is currently known from two nearby localities inside Chu Yang Sin National Park in Dak Lak Province, southern Vietnam.** The two known sites are about 1 km apart.
+The confirmed range is therefore very small, but two known localities do **not** prove that the species occurs nowhere else. Fossorial dibamids are difficult to detect, so wider surveys are needed before the total distribution can be defined.
 
-The type locality is in pine forest on the northern slopes of Mount Chu Yang Sin at about **1,338 m above sea level**. Other specimens came from lower and intermediate sites. The study records animals from roughly **760–840 m** on open trail sections and forest edges and from approximately **1,140–1,340 m** on shaded slopes and in dry stream beds.
+## Where does the Chu Yang Sin Blind Skink hide?
 
-The known habitat is mid-elevation montane coniferous forest dominated by *Pinus kesiya*. Thick pine litter covers much of the ground, while rocks and boulders create sheltered microhabitats used by the lizards.
+**Researchers found *Dibamus irregularis* mainly beneath medium and large flat rocks and boulders.** Individuals were encountered during both daytime and nighttime surveys.
 
-## Where does Dibamus irregularis hide?
-
-**Researchers found *Dibamus irregularis* mainly beneath medium-sized and large flat rocks and boulders.** Individuals were encountered during both daytime and nighttime surveys.
-
-This matches the strongly fossorial body plan of *Dibamus*. Members of the genus are difficult to detect because they spend much of their time in soil, leaf litter, moss, roots, decaying wood and other concealed ground-level microhabitats.
-
-The 2026 paper states that the natural history of *D. irregularis* remains largely unknown. The field observations therefore describe where specimens were found; they should not be expanded into unsupported claims about daily activity, home range, diet or seasonal behavior.
+The published field observations support a concealed, ground-level lifestyle, but they do not establish a complete activity cycle, home range or diet. The species’ natural history remains poorly known, so those attributes should not be inferred from related *Dibamus* species.
 
 ## What does Dibamus irregularis look like?
 
-**Dibamus irregularis has an elongated, nearly cylindrical, worm-like body with smooth scales, strongly reduced eyes and no external ear opening.** The holotype was dark brown to gray-brown or pinkish-brown in life, and pale transverse markings occur in parts of the type series.
+**Dibamus irregularis has a long, nearly cylindrical, worm-like body with smooth scales, strongly reduced eyes and no external ear opening.** The holotype was described as dark brown to gray-brown or pinkish-brown in life, and pale transverse markings occur in parts of the type series.
 
-The species reaches a maximum reported **snout–vent length of 147 mm (5.8 in)**. The tail is comparatively short, with the study reporting a tail-to-SVL ratio of about 13.9–16.8% in the examined series.
+The largest reported specimen reached **147 mm (5.8 in) snout–vent length**. The tail is short relative to the body, with a reported tail-to-SVL ratio of about 13.9–16.8% across the examined series.
 
-Male *Dibamus* retain small flap-like hind-limb rudiments. The researchers used the presence of these structures as one character for determining sex in the type series; females lack comparable external hind-limb rudiments.
+In the male holotype, the eyes were barely visible beneath a single ocular scale. That observation supports strong eye reduction, but it does not demonstrate complete absence of visual function. “Blind skink” should therefore be treated as the common name, not as an experimental statement about vision.
 
-## How is Dibamus irregularis identified scientifically?
+Male *Dibamus* retain small flap-like hind-limb rudiments; females lack comparable external hind-limb rudiments. This sex-linked external character was used in the type-series assessment.
 
-**The species is diagnosed by a combination of scalation, body proportions, skeletal characters and DNA evidence rather than by one field mark.** Important characters in the formal description include two to three postocular scales, 180–211 ventral scales, 39–46 subcaudal scales, short tail proportions and characteristic states of the rostral, nasal and labial sutures.
+## How is Dibamus irregularis distinguished from other Dibamus?
 
-One reason this combination matters is that several individual characters overlap with other *Dibamus*. A photographed worm-like lizard from Southeast Asia therefore cannot be identified confidently as *D. irregularis* from body shape alone.
+**The species is diagnosed by a combination of scalation, body proportions, skeletal characters and DNA evidence rather than one visible field mark.** The formal diagnosis includes two to three postocular scales, 180–211 ventral scales, 39–46 subcaudal scales, a comparatively short tail and characteristic states of the rostral, nasal and labial sutures.
 
-The detailed type-series measurements also show substantial variation within the new species. That variability became important enough to influence the scientific name itself.
+Several of those characters overlap individually with other *Dibamus*. A photographed worm-like lizard from Southeast Asia therefore cannot be identified confidently as *D. irregularis* from body shape alone.
 
-## Why is it called Dibamus irregularis?
+Mitochondrial analyses using 16S, ND2 and COI recovered the Chu Yang Sin population as a deeply divergent, well-supported lineage. The study combined this molecular result with external and skeletal differences before recognizing the population as a new species.
 
-**The species name *irregularis* refers to unusually variable and asymmetric external characters, especially the number of postocular scales.** The Latin adjective means “irregular.”
+## Why is the species called irregularis?
 
-Among the 12 specimens, some had two postocular scales on both sides of the head, some had three on both sides, and others had two on one side and three on the other. Earlier *Dibamus* diagnoses often treated postocular counts as relatively stable characters, so the larger type series exposed more within-species variation than small samples might reveal.
+**The name *irregularis* refers to unusually variable and asymmetric external characters, especially the number of postocular scales.** The Latin adjective means “irregular.”
 
-This is one of the study’s broader taxonomic lessons: diagnostic characters should be tested across enough specimens before they are assumed to be fixed within a species.
+Among the 12 examined specimens, five had two postocular scales on both sides, four had three on both sides, and three had two on one side and three on the other. This variation matters because postocular counts have often been used in *Dibamus* diagnoses.
 
-## How did researchers confirm it as a new species?
-
-**The authors recognized *Dibamus irregularis* from concordant morphological and molecular evidence.** They compared the type series with other nominal *Dibamus* species, examined external and skeletal characters, and reconstructed relationships using mitochondrial 16S, ND2 and COI sequences.
-
-The study did not define the species from a single unusual scale count. Instead, it used a repeatable combination of characters and genetic evidence to show that the Chu Yang Sin population was distinct from described congeners.
-
-That integrative approach is especially important in secretive burrowing lizards because external morphology can be conservative and sample sizes are often small.
+The larger type series therefore provides useful information gain beyond the species description itself: a character that can appear stable in small samples may vary substantially within one species.
 
 ## What is known about Dibamus irregularis reproduction?
 
-**A two-egg clutch of *Dibamus irregularis* provided the first description of a complete clutch for the genus *Dibamus*.** The clutch was found beneath an isolated stone about 40 cm across in open pine woodland beside a trail.
+**The 2026 study documented a complete clutch of two *Dibamus irregularis* eggs, the first complete clutch described for the genus *Dibamus*.** The clutch was found beneath an isolated stone about 40 cm across in open pine woodland beside a trail.
 
-The eggs sat partly within an air pocket above relatively dry soil, pine needles and roots rather than being completely buried. They were white and elongated. The two eggs measured approximately **10.0 × 5.4 mm** and **9.9 × 5.7 mm**.
+The two white, elongated eggs measured approximately **10.0 × 5.4 mm** and **9.9 × 5.7 mm**. Their upper surfaces occupied an air pocket beneath the stone rather than being fully buried. DNA sequencing of one egg at the 16S mitochondrial marker confirmed that it belonged to *D. irregularis*.
 
-DNA sequencing of one egg at the 16S mitochondrial marker confirmed that it belonged to *D. irregularis*.
+The observation does not establish a universal clutch size from one nest. It shows that this documented clutch contained two eggs. The authors also found no evidence of parental care such as nest guarding.
 
-The discovery does not establish parental care. Although adult lizards were found near the clutch, the authors reported no evidence of nest guarding.
-
-## Why is the two-egg clutch important?
-
-**The clutch fills an unusually large gap in the known reproductive biology of *Dibamus*.** Before this study, the only reported wild clutch record for the genus was based on a single egg collected in Thailand in 1903 and later assigned to *Dibamus alfredi*.
-
-Courtship, mating, egg laying and parental behavior remain poorly documented across Dibamidae. A verified two-egg clutch therefore adds direct biological information rather than simply expanding the species list.
-
-It also illustrates why new-species work can contribute to natural history: collecting a larger type series and documenting the exact microhabitat revealed both taxonomic variation and reproductive data.
-
-## How restricted is its known range?
-
-**The confirmed range of *Dibamus irregularis* is extremely small based on current evidence: two localities about 1 km apart inside Chu Yang Sin National Park.** This is a statement about present records, not proof that the species occurs nowhere else.
-
-Fossorial *Dibamus* are difficult to survey, so absence from surrounding areas can reflect limited detection as well as genuinely narrow distribution. Additional fieldwork is needed before its full range can be mapped confidently.
-
-The species should therefore not be assigned to other parts of Vietnam from habitat similarity alone.
+Before this study, the only reported wild clutch record discussed for *Dibamus* was based on a single egg collected in Thailand more than a century earlier. The new clutch therefore fills a substantial gap in the genus’s reproductive natural history.
 
 ## What is the conservation status of Dibamus irregularis?
 
-**The describing authors recommended treating *Dibamus irregularis* as Data Deficient under IUCN Red List criteria because its distribution, population and threats remain poorly known.** That recommendation is not the same as confirming a formal global IUCN Red List assessment.
+**The describing authors recommended that *Dibamus irregularis* be considered Data Deficient because its distribution, population and threats remain poorly known.** That recommendation is not the same as a formal published IUCN Red List assessment.
 
-All known specimens came from protected land in Chu Yang Sin National Park. The authors considered the recorded habitat relatively stable and did not identify an immediate specific threat, but they also emphasized the species’ apparently local distribution and the need for special attention.
+All currently documented localities lie inside Chu Yang Sin National Park. The authors described the recorded habitat as relatively stable and did not identify an immediate specific threat, while also emphasizing the species’ apparently local distribution and the need for further attention.
 
-The strongest current conservation conclusion is therefore limited: the known range is small, the habitat lies within a national park, and more survey data are required.
+As of September 2026, the most defensible conservation summary is: **known from a very small protected-area range, with insufficient data to assess population trend or total distribution confidently.**
 
 ## Why does the discovery matter?
 
-**Dibamus irregularis adds both a species and new reproductive evidence to one of Southeast Asia’s least-known lizard groups.** Its description also shows how undersampling can obscure variation in characters that taxonomists use to distinguish species.
+**Dibamus irregularis adds both a new species and direct reproductive evidence to a poorly known Southeast Asian lizard lineage.** The study also demonstrates why larger samples and integrative taxonomy matter in secretive fossorial animals: morphology can be conservative, diagnostic characters can vary within a species, and field encounters are uncommon.
 
-For Skinkpedia, the species is additionally useful as a taxonomy boundary. Its common name contains “skink,” but its scientific placement is Dibamidae. Keeping that distinction explicit prevents similar body form or common naming from being mistaken for close family membership.
+For Skinkpedia, the species also clarifies an important taxonomy boundary. The common name contains “skink,” but *Dibamus irregularis* is a dibamid rather than a member of Scincidae. Compare it with the true skink [*Scincella verecunda*](/skink-biology/scincella-verecunda/), another species described in 2026 whose taxonomic significance centers on an unusual eyelid character.
 
 ## Key facts about Dibamus irregularis
 
-- *Dibamus irregularis* was formally described in **2026**.
-- It is a **dibamid lizard**, not a true skink in Scincidae.
+- *Dibamus irregularis* was formally described on **February 26, 2026**.
+- It belongs to **Dibamidae**, not Scincidae.
 - The suggested English common name is **Chu Yang Sin Blind Skink**.
-- It is known from **Chu Yang Sin National Park, Dak Lak Province, Vietnam**.
+- It is confirmed from **Chu Yang Sin National Park, Dak Lak Province, Vietnam**.
 - The type series contains **12 specimens**.
 - Maximum reported snout–vent length is **147 mm (5.8 in)**.
-- Researchers found animals mainly beneath **rocks and boulders in montane pine forest**.
-- The species name refers to **irregular and asymmetric postocular scale counts**.
-- A verified **two-egg clutch** is the first complete clutch described for the genus *Dibamus*.
-- Its describing authors recommended **Data Deficient** treatment pending better distribution and population data.
+- Researchers found specimens mainly beneath **rocks and boulders in montane pine forest**.
+- The species name reflects **irregular and asymmetric postocular scale counts**.
+- A verified **two-egg clutch** is the first complete clutch described for *Dibamus*.
+- The describing authors recommended **Data Deficient** pending better distribution and population data.
 
 ## Frequently asked questions
 
@@ -160,27 +131,27 @@ The scientific name is ***Dibamus irregularis***.
 
 ### Is Dibamus irregularis a skink?
 
-Not in the strict taxonomic sense. *Dibamus irregularis* belongs to **Dibamidae**, while true skinks belong to **Scincidae**.
+Not in the strict taxonomic sense. *Dibamus irregularis* belongs to **Dibamidae**; true skinks belong to **Scincidae**.
 
 ### Where is Dibamus irregularis found?
 
-Confirmed records are currently limited to two nearby localities in **Chu Yang Sin National Park, Dak Lak Province, Vietnam**.
+Confirmed records are limited to two nearby localities in **Chu Yang Sin National Park, Dak Lak Province, Vietnam**.
 
 ### How big is Dibamus irregularis?
 
 The largest specimen reported in the 2026 description had a snout–vent length of **147 mm (5.8 in)**.
 
-### Why is it called irregularis?
+### Is the Chu Yang Sin Blind Skink completely blind?
 
-The name refers especially to the irregular, sometimes asymmetric number of postocular scales among specimens in the type series.
+The holotype has strongly reduced eyes that are barely visible beneath an ocular scale, but the study did not experimentally establish complete absence of vision.
 
 ### How many eggs does Dibamus irregularis lay?
 
-The only documented clutch contained **two eggs**. One clutch is not enough to establish that every female always lays two eggs.
+The only complete clutch documented in the description contained **two eggs**. One clutch does not establish that every female always lays two eggs.
 
 ### Can Dibamus irregularis be kept as a pet?
 
-The species was only recently described, its natural history remains poorly known, and the scientific literature does not provide an evidence-based captive-care framework. This page is a taxonomy and natural-history profile, not a husbandry guide.
+The species was only recently described and the scientific literature does not provide an evidence-based captive husbandry framework. This page is a taxonomy and natural-history profile, not a care guide.
 
 ---
 
