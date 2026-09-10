@@ -167,7 +167,11 @@ def schema_article(p,desc,breadcrumbs):
              'image':{'@type':'ImageObject','url':image,'width':1600,'height':900},
              'mainEntityOfPage':{'@id':canon+'#webpage'},'isPartOf':{'@id':SITE_URL+'/#website'},
              'author':{'@id':SITE_URL+AUTHOR_URL+'#person'},'publisher':{'@id':SITE_URL+'/#organization'},'inLanguage':'en'}
-        if not p['page_id'].startswith('SAT-'):
+        if p['page_id']=='OUT-020':
+            art['about']={'@type':'Taxon','name':'Dibamus irregularis','taxonRank':'species','parentTaxon':{'@type':'Taxon','name':'Dibamidae'}}
+        elif p['page_id']=='OUT-021':
+            art['about']={'@type':'Taxon','name':'Scincella verecunda','taxonRank':'species','parentTaxon':{'@type':'Taxon','name':'Scincidae','alternateName':'Skinks'}}
+        elif not p['page_id'].startswith('SAT-'):
             art['about']={'@type':'Taxon','name':'Scincidae','alternateName':'Skinks'}
         graph.append(art)
     graph.append(schema_breadcrumb(canon,breadcrumbs))
@@ -230,7 +234,6 @@ def related_guides(pid,pages,children,limit=3):
     if satellite:
         for cid in ('SAT-001','SAT-002','SAT-003'): add(cid)
     else:
-        # Hubs point down first; leaf pages stay close to their topical cluster.
         for cid in children.get(pid,[]): add(cid)
         section=p.get('section','')
         for cid,cp in pages.items():
@@ -239,7 +242,6 @@ def related_guides(pid,pages,children,limit=3):
         add(parent)
         if parent in children:
             for cid in children[parent]: add(cid)
-        # Final fallback keeps every core/outer article connected without touching satellites.
         for cid in ('CORE-001','CORE-002','CORE-003','OUT-015','OUT-008'): add(cid)
 
     return [{'title':pages[cid]['title'],'url':pages[cid]['url'],'description':pages[cid]['description']} for cid in chosen]
