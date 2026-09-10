@@ -195,6 +195,55 @@ def wrap_tables(html):
         wrap=soup.new_tag('div'); wrap['class']='table-wrap'; table.wrap(wrap)
     return str(soup)
 
+def strip_reference_links(html):
+    """Keep citations readable while preventing Reference sections from becoming outbound link blocks."""
+    soup=BeautifulSoup(html,'html.parser')
+    for heading in soup.find_all(['h2','h3']):
+        label=heading.get_text(' ',strip=True).lower()
+        if not (label=='references' or label.startswith('references ') or label in {'sources','sources & references','sources and references'}):
+            continue
+        level=int(heading.name[1])
+        node=heading.next_sibling
+        while node is not None:
+            nxt=node.next_sibling
+            if getattr(node,'name',None) in {'h2','h3'} and int(node.name[1])<=level:
+                break
+            if getattr(node,'find_all',None):
+                links=[]
+                if getattr(node,'name',None)=='a': links.append(node)
+                links.extend(node.find_all('a',href=True))
+                for a in links:
+                    href=a.get('href','')
+                    if href.startswith(('http://','https://','//')):
+                        a.unwrap()
+            node=nxt
+    return str(soup)
+
+def related_guides(pid,pages,children,limit=3):
+    """Choose contextual internal links for every article while preserving satellite isolation."""
+    p=pages[pid]; chosen=[]; satellite=pid.startswith('SAT-')
+    def add(cid):
+        if not cid or cid==pid or cid not in pages or cid in chosen or len(chosen)>=limit: return
+        if pages[cid]['page_id'].startswith('SAT-') != satellite: return
+        chosen.append(cid)
+
+    if satellite:
+        for cid in ('SAT-001','SAT-002','SAT-003'): add(cid)
+    else:
+        # Hubs point down first; leaf pages stay close to their topical cluster.
+        for cid in children.get(pid,[]): add(cid)
+        section=p.get('section','')
+        for cid,cp in pages.items():
+            if cp.get('section')==section: add(cid)
+        parent=p.get('parent_id') or ''
+        add(parent)
+        if parent in children:
+            for cid in children[parent]: add(cid)
+        # Final fallback keeps every core/outer article connected without touching satellites.
+        for cid in ('CORE-001','CORE-002','CORE-003','OUT-015','OUT-008'): add(cid)
+
+    return [{'title':pages[cid]['title'],'url':pages[cid]['url'],'description':pages[cid]['description']} for cid in chosen]
+
 def scientific_name(body):
     m=re.search(r'\*\*[^\n]*?\(\*([A-Z][a-z]+ [a-z][a-z-]+)\*\)',body)
     return m.group(1) if m else ''
@@ -218,13 +267,11 @@ def build():
     article_t=env.get_template('article.html')
     for pid,p in pages.items():
         body=re.sub(r'^# .+?\n+','',p['body_md'],count=1,flags=re.M)
-        html=wrap_tables(render_md(body)); toc=toc_from_html(html); crumbs=breadcrumb_chain(pid,pages)
+        html=strip_reference_links(wrap_tables(render_md(body))); toc=toc_from_html(html); crumbs=breadcrumb_chain(pid,pages)
         desc=p['description']; canon=SITE_URL+p['url']; hero=p['hero_image']; title_tag=seo_title(p)
-        ch=[]
-        for cid in children.get(pid,[])[:6]:
-            cp=pages[cid]; ch.append({'title':cp['title'],'url':cp['url'],'description':cp['description']})
+        related=related_guides(pid,pages,children,limit=3)
         rendered=article_t.render(**render_base_kwargs(title_tag,desc,canon,'article',SITE_URL+hero,p['hero_alt'],schema_article(p,desc,crumbs)),
-          breadcrumbs=crumbs,title=p['title'],eyebrow=eyebrow_label(p),scientific_name=(scientific_name(p['body_md']) if pid in SINGLE_SPECIES_PAGES else ''),hero_image=hero,hero_alt=p['hero_alt'],toc=toc,body_html=html,children=ch)
+          breadcrumbs=crumbs,title=p['title'],eyebrow=eyebrow_label(p),scientific_name=(scientific_name(p['body_md']) if pid in SINGLE_SPECIES_PAGES else ''),hero_image=hero,hero_alt=p['hero_alt'],toc=toc,body_html=html,children=related)
         op=out_path(p['url']); op.parent.mkdir(parents=True,exist_ok=True); op.write_text(rendered,encoding='utf-8')
 
     trust_routes={'about.md':'/about/','editorial-policy.md':'/editorial-policy/','corrections-policy.md':'/corrections-policy/','sources-research-methodology.md':'/sources-research-methodology/','contact.md':'/contact/','author-farrukh-abdullah.md':'/authors/farrukh-abdullah/','affiliate-disclosure.md':'/affiliate-disclosure/'}
