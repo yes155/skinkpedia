@@ -26,7 +26,6 @@ for f in index_files:
         ('property','og:title'),('property','og:description'),('property','og:url'),('property','og:image'),('property','og:image:alt'),
         ('name','twitter:card'),('name','twitter:title'),('name','twitter:description'),('name','twitter:image'),('name','twitter:image:alt')]:
         if not s.find('meta',attrs={meta[0]:meta[1]}): errors.append(f'{f}: missing {meta[1]}')
-    # heading id uniqueness
     ids=[h.get('id') for h in s.find_all(['h2','h3']) if h.get('id')]
     dups=[x for x,n in Counter(ids).items() if n>1]
     if dups: errors.append(f'{f}: duplicate heading ids {dups}')
@@ -63,18 +62,17 @@ for value,n in Counter(descs).items():
 for value,n in Counter(canonicals).items():
     if n>1: errors.append(f'duplicate canonical: {value!r} x{n}')
 
-# Sitemap
 sm=DIST/'sitemap.xml'
 try:
     root=ET.parse(sm).getroot(); ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
     locs=[e.text for e in root.findall('s:url/s:loc',ns)]
-    if len(locs)!=61: errors.append(f'sitemap expected 61 URLs, found {len(locs)}')
+    expected_urls=len(canonicals)
+    if len(locs)!=expected_urls: errors.append(f'sitemap expected {expected_urls} URLs, found {len(locs)}')
     if len(locs)!=len(set(locs)): errors.append('sitemap contains duplicate URLs')
     if set(locs)!=set(canonicals): errors.append('sitemap URLs do not exactly match indexable canonicals')
 except Exception as e: errors.append(f'invalid sitemap: {e}')
 robots=(DIST/'robots.txt').read_text(encoding='utf-8')
 if f'Sitemap: {SITE_URL}/sitemap.xml' not in robots: errors.append('robots.txt sitemap mismatch')
-# 404
 s404=BeautifulSoup((DIST/'404.html').read_text(encoding='utf-8'),'html.parser')
 r404=s404.find('meta',attrs={'name':'robots'})
 if not r404 or 'noindex' not in r404.get('content',''): errors.append('404 missing noindex')
