@@ -1,0 +1,7 @@
+Source Page ID,Source URL,Target Page ID,Target URL,Status
+OUT-015,/skink-biology/,OUT-020,/skink-biology/dibamus-irregularis/,PASS
+OUT-015,/skink-biology/,OUT-021,/skink-biology/scincella-verecunda/,PASS
+OUT-020,/skink-biology/dibamus-irregularis/,OUT-015,/skink-biology/,PASS
+OUT-020,/skink-biology/dibamus-irregularis/,OUT-021,/skink-biology/scincella-verecunda/,PASS
+OUT-021,/skink-biology/scincella-verecunda/,OUT-015,/skink-biology/,PASS
+OUT-021,/skink-biology/scincella-verecunda/,OUT-020,/skink-biology/dibamus-irregularis/,PASS
