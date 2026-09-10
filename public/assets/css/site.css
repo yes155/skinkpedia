@@ -33,5 +33,7 @@
 .path-card:nth-child(4){background:#eaf3f2;border-color:#d2e4e2}
 .path-card:hover,.species-card:hover,.editorial-card:hover,.link-card:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(32,40,35,.10);border-color:#bccbc1}
 .path-card:hover h3 a,.species-card:hover h3 a,.editorial-card:hover h3 a,.link-card:hover h3 a{color:var(--forest-700)}
+.editorial-split h2{margin-top:0}
+.editorial-split .eyebrow{margin-bottom:14px}
 @media(max-width:960px){.home-hero .hero-copy{width:min(72%,680px)}.home-hero::after{background:linear-gradient(90deg,rgba(8,27,23,.93) 0%,rgba(8,27,23,.75) 58%,rgba(8,27,23,.28) 100%)}.hero-facts-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-facts-grid>div:nth-child(2){border-right:0}.hero-facts-grid>div:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.13)}.hero-facts-grid>div:first-child,.hero-facts-grid>div:nth-child(3){padding-left:0}}
 @media(max-width:640px){.home-hero{min-height:520px;padding:0}.home-hero .hero-grid{min-height:520px;padding-block:48px}.home-hero .hero-copy{width:100%;max-width:100%}.home-hero h1{font-size:clamp(2.5rem,12vw,3.35rem)}.home-hero .hero-deck{font-size:1.06rem}.home-hero .hero-backdrop img{object-position:64% center}.home-hero::after{background:linear-gradient(90deg,rgba(8,27,23,.95) 0%,rgba(8,27,23,.87) 58%,rgba(8,27,23,.54) 100%)}.hero-facts-grid>div{padding:15px 12px}.hero-facts-grid>div:first-child,.hero-facts-grid>div:nth-child(3){padding-left:0}.hero-facts strong{font-size:.84rem}}
