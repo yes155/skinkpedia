@@ -1,6 +1,6 @@
 ---
 page_id: "OUT-021"
-title: "Scincella verecunda: Lincang Ground Skink from Yunnan, China"
+title: "Scincella verecunda: New Ground Skink Species from China"
 url: "/skink-biology/scincella-verecunda/"
 parent_id: "OUT-015"
 tier: "Outer"
@@ -12,108 +12,87 @@ hero_alt: "Scincella verecunda on moist pine-needle litter in high-elevation for
 draft: true
 ---
 
-# Scincella verecunda: Lincang Ground Skink from Yunnan, China
+# Scincella verecunda: New Ground Skink Species from China
 
-**Scincella verecunda is a ground-dwelling skink described in 2026 from high-elevation forest in Yunnan Province, China.** It is a true skink in the family **Scincidae**, and its most important taxonomic feature is the **absence of a transparent palpebral disc on the lower eyelid**, a structure historically associated with the genus *Scincella*.
+**Scincella verecunda is a newly described ground skink from high-elevation forest in Yunnan Province, China.** The species was formally described in April 2026, belongs to the true-skink family **Scincidae**, and lacks the transparent lower-eyelid palpebral disc historically associated with Asian *Scincella*.
 
-The species is currently known only from two nearby localities in Linxiang District, Lincang City. Its authors suggested the English common name **Lincang Ground Skink**.
+The authors proposed the English common name **Lincang Ground Skink**. Its combination of molecular placement within *Scincella* and unusual eyelid morphology makes the species important for understanding how reliable visible characters are in skink classification. This page covers taxonomy, identification, range and natural history; it does not provide captive-care advice.
 
 | Attribute | *Scincella verecunda* |
 | --- | --- |
 | Family | Scincidae |
 | Genus | *Scincella* |
 | Suggested English name | Lincang Ground Skink |
-| Described | 2026 |
-| Known locality | Linxiang District, Lincang City, Yunnan, China |
+| Formal description | April 17, 2026 |
+| Confirmed range | Linxiang District, Lincang City, Yunnan, China |
 | Known elevation | 2,113–2,358 m (6,932–7,736 ft) |
 | Type series | 6 specimens, all female |
 | Maximum reported SVL | 48.7 mm (1.92 in) |
-| Distinctive feature | Lower-eyelid palpebral disc absent |
+| Distinctive character | Transparent lower-eyelid palpebral disc absent |
 
 ## What is Scincella verecunda?
 
-**Scincella verecunda is a newly described species of small ground skink from montane Yunnan in southwestern China.** Xu and colleagues formally described the species on April 17, 2026 using an integrative analysis of morphology and mitochondrial DNA.
+**Scincella verecunda is a small, ground-dwelling skink in the family Scincidae described from montane Yunnan in 2026.** Xu and colleagues recognized the species using an integrative analysis of morphology and mitochondrial DNA.
 
-The species belongs to *Scincella*, a genus of small, ground-oriented skinks distributed across parts of the Americas and Asia. Molecular analyses place the Lincang population within *Scincella* despite an eyelid character that does not fit the traditional morphological expectation for the genus.
+Molecular analyses place the Lincang population within *Scincella* even though its lower eyelid lacks a character long treated as typical of the genus. That conflict between genetic placement and morphology is the central scientific feature of the species.
 
-That mismatch between genetic placement and eyelid morphology is the main scientific reason this species is more than another locality record.
+For broader skink classification and anatomy, see the [skink biology guide](/skink-biology/).
 
-## Where was Scincella verecunda discovered?
+## Where is Scincella verecunda found?
 
-**Scincella verecunda is confirmed from two closely adjacent sites in Linxiang District, Lincang City, Yunnan Province, China.** The holotype, an adult female catalogued as QHU R2025058, was collected at **2,358 m** elevation on July 2, 2025.
+**Scincella verecunda is confirmed from two nearby localities in Linxiang District, Lincang City, Yunnan Province, China.** The holotype, adult female QHU R2025058, was collected at **2,358 m** elevation on July 2, 2025. Other type specimens came from that locality and a second site at **2,113 m**.
 
-Additional type specimens came from that site and a second locality at **2,113 m** elevation. The complete type series contains six individuals: four adult females and two subadult females.
+The type series contains six individuals: four adult females and two subadult females. Because no male is represented, the description does not establish adult male size, male coloration or sex-specific morphology.
 
-Because every specimen in the type series is female, the description does not establish adult male size, male coloration or sex-specific morphology. Those attributes require additional specimens rather than inference from related species.
+The authors noted that continuous montane habitat could extend into adjacent northern Myanmar, but they did not document a Myanmar population. As of September 2026, the confirmed country record remains **China**.
 
 ## What habitat does the Lincang Ground Skink use?
 
-**The known populations inhabit high-elevation coniferous forest and mixed coniferous–broad-leaved forest between 2,113 and 2,358 m.** The forest floor has thick pine-needle litter, abundant moss and fallen logs that create cover close to the ground.
+**The known populations occur in high-elevation coniferous forest and mixed coniferous–broad-leaved forest between 2,113 and 2,358 m.** The forest floor has thick pine-needle litter, abundant moss and fallen logs that provide concealed ground-level microhabitats.
 
 Researchers observed individuals active on the ground from daytime until dusk. When disturbed, the skinks rapidly retreated beneath fallen logs or other cover.
 
-During the surveys, daytime air temperatures were about **20–24°C (68–75°F)**, with frequent rainfall and generally high ambient humidity. These measurements describe field conditions during the study; they are not evidence-based captive husbandry targets.
-
-The species’ secretive behavior and remote montane habitat also explain its scientific name.
-
-## Why is it called Scincella verecunda?
-
-**The epithet *verecunda* comes from the Latin adjective *verecundus*, meaning “shy” or “retiring.”** The authors chose the name for the skink’s wary behavior and tendency to remain concealed in forest-floor microhabitats.
-
-Individuals escaped quickly under logs or ground cover when approached. The species also occurs in remote forest above 2,000 m, where detection requires deliberate searching.
-
-The authors proposed **Lincang Ground Skink** as the English common name, linking the species to its type region in Lincang City.
+During the survey period, daytime air temperatures were about **20–24°C (68–75°F)** with frequent rainfall and generally high ambient humidity. These are recorded field conditions, not evidence-based captive temperature or humidity targets.
 
 ## What does Scincella verecunda look like?
 
-**Scincella verecunda is a small brown skink with golden-yellow sides, irregular dark markings and a relatively long tail.** In life, the dorsum is brown with scattered small dark spots. The lateral surface is golden yellow and carries dark spots that can connect into worm-like or vermiform markings, while the dark dorsolateral stripes are irregular rather than sharply uniform.
+**Scincella verecunda is a small brown skink with golden-yellow sides, irregular dark markings and a relatively long tail.** In life, the dorsum is brown with scattered small dark spots. The lateral surface is golden yellow with dark spots that can join into worm-like markings, while the dorsolateral stripes are irregular rather than sharply uniform.
 
-The ventral surface of the trunk is golden yellow in the holotype. Preserved specimens lose much of that yellow tone, which is one reason field photographs and live-color descriptions matter in species diagnosis.
+The adult female holotype measured **48.7 mm (1.92 in) snout–vent length**. Across the six female specimens, SVL ranged from **34.3 to 48.7 mm**, but two of those animals were subadults. That range should not be presented as a proven adult size range for both sexes.
 
-The adult female holotype had a snout–vent length of **48.7 mm (1.92 in)**. Across the six female type specimens, SVL ranged from **34.3 to 48.7 mm**, but two individuals were subadults. These measurements should not be presented as a proven adult size range for both sexes.
+Preserved specimens lose much of the yellow coloration, which makes live-color documentation important when comparing the species with similar *Scincella*.
 
 ## How is Scincella verecunda identified?
 
-**The species is identified by a combination of eyelid structure, scalation, limb proportions, coloration and molecular evidence.** The most conspicuous diagnostic character is the absence of a transparent palpebral disc on the lower eyelid.
-
-The 2026 description also reports:
+**The species is diagnosed by a combination of eyelid structure, scalation, limb proportions, coloration and mitochondrial DNA.** The formal description reports:
 
 - **25–26 midbody scale rows**;
 - **62–65 paravertebral scale rows**;
 - **65–68 combined gular and ventral scale rows**;
 - **6–9 enlarged lamellae beneath the fourth finger**;
 - **11–13 enlarged lamellae beneath the fourth toe**;
-- toes that do not reach the fingers when the limbs are pressed against the body.
+- toes that do not contact the fingers when the limbs are pressed against the body;
+- no transparent palpebral disc on the lower eyelid.
 
-These characters are useful in formal identification, but a single count or color pattern should not be used independently to identify a photographed skink. Closely related *Scincella* can be externally similar.
+No single count or color patch should be used alone to identify a photographed animal. Closely related ground skinks can be externally similar, and the species description relies on a character combination plus molecular evidence.
 
-## What is a palpebral disc?
+### What is unusual about the lower eyelid?
 
-**A palpebral disc is a specialized semi-transparent scale or “window” in the lower eyelid of some skinks with movable eyelids.** It is formed from modified lower-eyelid scales and has historically been treated as an important character in skink classification.
+**Scincella verecunda lacks the transparent palpebral disc historically treated as characteristic of *Scincella*.** A palpebral disc is a semi-transparent scale or “window” formed from modified lower-eyelid scales in some skinks with movable eyelids.
 
-The unusual point in *Scincella verecunda* is not that it lacks an eye. The species has eyes; it lacks the specialized transparent disc in the lower eyelid.
+The species still has eyes. Absence of the palpebral disc does **not** mean the animal is blind. This separates the Lincang Ground Skink from animals conventionally called “blind skinks,” such as [*Dibamus irregularis*](/skink-biology/dibamus-irregularis/), which belongs to Dibamidae rather than Scincidae.
 
-This distinction also separates the Lincang Ground Skink from animals casually called “blind skinks.” For example, [*Dibamus irregularis*](/skink-biology/dibamus-irregularis/) has strongly reduced eyes and belongs to Dibamidae, whereas *S. verecunda* is a true skink in Scincidae.
+### What DNA evidence supports the species?
 
-## Why does the missing palpebral disc matter?
+**Mitochondrial DNA analyses recovered the Lincang population as a distinct lineage within *Scincella*.** The study combined 12S, 16S and CO1 mitochondrial sequences.
 
-**The missing palpebral disc challenges a morphological character historically used to help define *Scincella*.** Molecular evidence places *S. verecunda* securely within the genus, yet the species lacks the eyelid disc found in the Asian congeners compared in the study.
+The new species formed a clade with ***Scincella ouboteri*, *S. ochracea* and *S. reevesii***. Genetic divergence from its closest sampled relatives was at least **6.3% in 16S** and at least **16.6% in CO1** in the study’s comparisons.
 
-The authors interpret this conflict as evidence that eyelid morphology may be **homoplastic** within *Scincella*. In this context, homoplasy means a similar character state can be gained, lost or evolve independently in ways that do not perfectly track the evolutionary tree.
+The authors did not use genetic distance alone. Recognition of the species rested on the molecular placement together with consistent morphological differences.
 
-The practical taxonomic implication is important: the presence of a palpebral disc cannot automatically be treated as a universal defining character for every *Scincella* species. The authors argue that the morphological diagnosis of *Scincella* and related sphenomorphine skinks deserves reevaluation with broader taxon sampling, genomic evidence and comparative morphology.
+### How does it differ from close relatives?
 
-## What DNA evidence supports Scincella verecunda?
-
-**Mitochondrial DNA analyses recovered the Lincang population as a distinct lineage within *Scincella*.** The study combined sequences from the 12S, 16S and CO1 mitochondrial genes.
-
-The new species formed a clade with ***Scincella ouboteri*, *S. ochracea* and *S. reevesii***. Genetic divergence from its closest sampled relatives was at least **6.3% for 16S** and at least **16.6% for CO1** in the study’s comparisons.
-
-Genetic distance alone was not used as the diagnosis. The authors combined the molecular result with consistent morphological differences, which is why the evidence is stronger than either data source in isolation.
-
-## How does Scincella verecunda differ from close relatives?
-
-**Scincella verecunda differs from its closest sampled relatives through the combined absence of the palpebral disc, lower scale counts and shorter relative limbs.** Several comparisons are especially clear.
+**Scincella verecunda differs from its closest sampled relatives through the combined absence of the palpebral disc, lower scale counts and shorter relative limbs.** Several comparisons from the description are especially clear.
 
 | Character | *S. verecunda* | *S. ouboteri* | *S. ochracea* | *S. reevesii* |
 | --- | --- | --- | --- | --- |
@@ -121,37 +100,37 @@ Genetic distance alone was not used as the diagnosis. The authors combined the m
 | Midbody scale rows | 25–26 | 32 | 30–32 | 28–34 |
 | Lamellae under fourth toe | 11–13 | 18–20 | 15–19 | 14–18 |
 
-The comparison shows why the eyelid is important but not sufficient on its own. Scale counts, proportions and DNA all contribute to the species diagnosis.
+The table illustrates why the eyelid character is informative but not sufficient on its own. Multiple attributes support the diagnosis.
 
-## Is Scincella verecunda a blind skink?
+## Why does the missing palpebral disc matter?
 
-**No. *Scincella verecunda* is not described as blind.** It lacks a transparent lower-eyelid palpebral disc, not the eye itself.
+**The missing palpebral disc shows that a character once treated as a stable genus-level marker does not map perfectly onto the *Scincella* evolutionary tree.** Molecular evidence places *S. verecunda* within *Scincella*, yet the species lacks the transparent disc present in the Asian congeners compared in the study.
 
-This distinction matters because “blind skink” is used as a common name for the unrelated dibamid genus *Dibamus*. *Scincella verecunda* belongs to the true-skink family Scincidae and should be described as a ground skink rather than a blind skink.
+The authors interpret this as evidence that eyelid morphology may be **homoplastic** within *Scincella*. In this context, homoplasy means that a character can evolve, disappear or reappear independently rather than tracking ancestry in a simple one-to-one pattern.
 
-## How large is the known range?
+The practical taxonomic implication is narrow but important: presence of a palpebral disc should not automatically be treated as universal for every *Scincella* species. The authors argue that the morphological diagnosis of *Scincella* and related sphenomorphine skinks deserves reevaluation using broader taxon sampling, molecular data and comparative morphology.
 
-**The confirmed distribution currently consists of two nearby localities in Linxiang District, Yunnan.** The authors note that continuous montane habitat and geographic proximity make occurrence in adjacent northern Myanmar possible, but no Myanmar population was confirmed in the study.
+## Why is it called Scincella verecunda?
 
-The correct present range statement is therefore **known from Yunnan, China**. Northern Myanmar is a survey hypothesis, not an established country record.
+**The epithet *verecunda* comes from the Latin *verecundus*, meaning shy or retiring.** The authors selected the name for the animal’s secretive behavior and rapid retreat beneath forest-floor cover when disturbed.
 
-This distinction is important for newly described species because predicted habitat and verified distribution are different evidence categories.
+They proposed **Lincang Ground Skink** as the English common name, linking the species to Lincang City and its type region.
 
 ## What is the conservation status of Scincella verecunda?
 
-**The describing authors provisionally recommended Data Deficient because the species’ total range, population trend and threats are not yet known.** Their field surveys found the skink commonly at the known localities, but the species appeared associated with well-preserved high-elevation primary forest.
+**The describing authors provisionally assigned *Scincella verecunda* to Data Deficient because its total distribution, population trend and threats remain insufficiently known.** Their surveys found the species commonly at the two known localities, but it appeared associated with well-preserved high-elevation primary forest.
 
-The paper’s Data Deficient recommendation applies the IUCN criteria as an author assessment. It should not be presented as proof that *Scincella verecunda* already has a formal published IUCN Red List account.
+That provisional Data Deficient treatment is an assessment in the species description; it should not be presented as proof of a separate formal IUCN Red List account.
 
-Additional surveys are needed to determine whether the species is genuinely range-restricted, how continuous its populations are and which habitat changes pose meaningful threats.
+Additional surveys are needed to establish whether the species is genuinely range-restricted, how continuous its populations are and which habitat changes pose meaningful threats.
 
 ## Why is the discovery scientifically important?
 
-**Scincella verecunda changes the morphological picture of its genus, not just the species count.** Its DNA places it within *Scincella*, while its lower eyelid lacks a character that had been treated as typical of the genus.
+**Scincella verecunda changes the morphological picture of its genus rather than merely adding another species name.** DNA places it inside *Scincella*, while the lower eyelid lacks a structure historically used in diagnosing the genus.
 
-That makes the species a useful example of why modern taxonomy increasingly combines morphology with molecular evidence. A classification based only on one visible trait could have obscured its evolutionary relationship; a classification based only on DNA would have missed the significance of the eyelid difference.
+The species therefore provides a clear example of why modern taxonomy combines morphology with molecular evidence. A classification based only on one visible eyelid character could obscure evolutionary placement; a classification based only on DNA would miss the significance of the unusual morphology.
 
-The discovery also adds evidence that high-elevation forests of southwestern China still contain overlooked small-bodied reptile diversity.
+The discovery also documents previously overlooked small-bodied reptile diversity in high-elevation forests of southwestern China.
 
 ## Key facts about Scincella verecunda
 
@@ -161,11 +140,10 @@ The discovery also adds evidence that high-elevation forests of southwestern Chi
 - It is confirmed from **Linxiang District, Lincang City, Yunnan Province, China**.
 - Known sites lie at **2,113–2,358 m** elevation.
 - The type series contains **six specimens, all female**.
-- Maximum recorded SVL in the type series is **48.7 mm (1.92 in)**.
+- Maximum recorded SVL is **48.7 mm (1.92 in)**.
 - The species **lacks a transparent palpebral disc on the lower eyelid**.
 - Molecular evidence used **12S, 16S and CO1 mitochondrial genes**.
-- Its closest sampled relatives include *S. ouboteri*, *S. ochracea* and *S. reevesii*.
-- The describing authors recommended **Data Deficient** pending broader distribution and population data.
+- The describing authors provisionally assigned it to **Data Deficient** pending broader surveys.
 
 ## Frequently asked questions
 
@@ -189,17 +167,13 @@ The eyes are present, but the lower eyelid **lacks the transparent palpebral dis
 
 No evidence in the species description identifies it as blind. The diagnostic eyelid character concerns the palpebral disc, not absence of the eye.
 
-### Why is the species called verecunda?
-
-The Latin-derived name means **shy or retiring** and refers to the animal’s secretive behavior and rapid retreat beneath forest-floor cover when disturbed.
-
 ### Does Scincella verecunda occur in Myanmar?
 
-Not as a confirmed record. The authors suggested that suitable continuous montane habitat means it **may** occur in adjacent northern Myanmar, but the published type records are from China.
+Not as a confirmed record. The authors suggested that continuous montane habitat means it may occur in adjacent northern Myanmar, but the published records are from China.
 
 ### Can Scincella verecunda be kept as a pet?
 
-The species was described from wild montane populations, and the scientific description does not establish a captive husbandry protocol. This article covers taxonomy, identification and natural history rather than pet-care recommendations.
+The species was described from wild montane populations and the scientific description does not establish a captive husbandry protocol. This article covers taxonomy, identification and natural history rather than pet care.
 
 ---
 
