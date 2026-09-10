@@ -81,6 +81,8 @@ if len(heroes)!=expected_heroes: errs.append(f'Hero count expected {expected_her
 for p in heroes:
     im=Image.open(p)
     if im.size!=(1600,900): errs.append(f'{p}: dimensions {im.size}')
+    if p.name in {'out-020-dibamus-irregularis-hero.webp','out-021-scincella-verecunda-hero.webp'} and p.stat().st_size < 50000:
+        errs.append(f'{p}: suspiciously small hero file, possible corruption')
 # banned artifacts
 for f in html:
     txt=f.read_text(encoding='utf-8')
