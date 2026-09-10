@@ -1,0 +1,14 @@
+/* Homepage spacing normalization */
+.section-pad{padding:56px 0}
+.section-pad .section-heading{margin-bottom:24px}
+.section-pad .section-heading>.eyebrow,
+.section-pad .split-heading .eyebrow{margin-top:0;margin-bottom:10px}
+.section-pad .section-heading h2,
+.section-pad .split-heading h2{margin-top:0;margin-bottom:.35em}
+.section-pad .section-heading h2+p{margin-top:8px;margin-bottom:0}
+.split-heading{align-items:end}
+
+@media(max-width:640px){
+  .section-pad{padding:44px 0}
+  .section-pad .section-heading{margin-bottom:20px}
+}
