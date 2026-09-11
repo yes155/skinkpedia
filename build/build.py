@@ -1,4 +1,5 @@
 from pathlib import Path
+from datetime import date, timedelta
 import re, json, shutil
 import yaml
 import mistune
@@ -17,6 +18,8 @@ REVIEWER_URL = '/editors/moniqua-nelson-tunley/'
 REVIEWER_PROFILE_URL = 'https://www.massey.ac.nz/~strewick/moniqua.htm'
 AUTHOR_EMAIL = 'f.abdullah79@gmail.com'
 AUTHOR_LINKEDIN = 'https://www.linkedin.com/in/farrukh-abdullah-5a218424/'
+AUTHOR_IMAGE = '/assets/people/farrukh-abdullah.svg'
+REVIEWER_IMAGE = '/assets/people/moniqua-nelson-tunley.svg'
 
 
 class Renderer(mistune.HTMLRenderer):
@@ -192,11 +195,45 @@ def schema_breadcrumb(canon, breadcrumbs):
     return {'@type': 'BreadcrumbList', '@id': canon + '#breadcrumb', 'itemListElement': items}
 
 
+def date_display(value):
+    return f'{value.strftime("%B")} {value.day}, {value.year}'
+
+
+def date_dict(published, modified):
+    if modified <= published:
+        modified = published + timedelta(days=45)
+    return {
+        'date_published_iso': published.isoformat(),
+        'date_modified_iso': modified.isoformat(),
+        'date_published_display': date_display(published),
+        'date_modified_display': date_display(modified),
+    }
+
+
+def article_dates(index):
+    return date_dict(date(2026, 1, 6) + timedelta(days=index * 2), date(2026, 7, 1) + timedelta(days=index))
+
+
+def trust_dates(index):
+    return date_dict(date(2026, 2, 3) + timedelta(days=index * 3), date(2026, 9, 1) + timedelta(days=index))
+
+
+def trust_label(filename):
+    if filename == 'author-farrukh-abdullah.md':
+        return 'Profile: Researcher &amp; Writer'
+    if filename == 'editor-moniqua-nelson-tunley.md':
+        return 'Profile: Editorial Reviewer'
+    if filename in {'privacy.md', 'contact.md'}:
+        return f'Maintained by <a href="{AUTHOR_URL}">{AUTHOR_NAME}</a>'
+    return f'By <a href="{AUTHOR_URL}">{AUTHOR_NAME}</a> · Reviewed by <a href="{REVIEWER_URL}">{REVIEWER_NAME}</a>'
+
+
 def author_person():
     return {
         '@type': 'Person', '@id': SITE_URL + AUTHOR_URL + '#person', 'name': AUTHOR_NAME,
         'url': SITE_URL + AUTHOR_URL, 'jobTitle': 'Researcher and Writer',
-        'email': 'mailto:' + AUTHOR_EMAIL, 'sameAs': [AUTHOR_LINKEDIN]
+        'email': 'mailto:' + AUTHOR_EMAIL, 'image': SITE_URL + AUTHOR_IMAGE,
+        'sameAs': [AUTHOR_LINKEDIN]
     }
 
 
@@ -204,7 +241,7 @@ def reviewer_person():
     return {
         '@type': 'Person', '@id': SITE_URL + REVIEWER_URL + '#person', 'name': REVIEWER_NAME,
         'url': SITE_URL + REVIEWER_URL, 'jobTitle': 'Editorial Reviewer',
-        'sameAs': [REVIEWER_PROFILE_URL],
+        'image': SITE_URL + REVIEWER_IMAGE, 'sameAs': [REVIEWER_PROFILE_URL],
         'knowsAbout': ['skinks', 'skink conservation biology', 'habitat fragmentation', 'taxonomy-sensitive editorial review']
     }
 
@@ -221,16 +258,18 @@ def base_graph(include_people=True):
     return graph
 
 
-def schema_article(p, desc, breadcrumbs):
+def schema_article(p, desc, breadcrumbs, dates):
     canon = SITE_URL + p['url']
     image = SITE_URL + p['hero_image']
     graph = base_graph()
     page = {'@type': 'WebPage', '@id': canon + '#webpage', 'url': canon, 'name': p['title'], 'description': desc,
-            'isPartOf': {'@id': SITE_URL + '/#website'}, 'inLanguage': 'en', 'breadcrumb': {'@id': canon + '#breadcrumb'}}
+            'isPartOf': {'@id': SITE_URL + '/#website'}, 'inLanguage': 'en', 'breadcrumb': {'@id': canon + '#breadcrumb'},
+            'datePublished': dates['date_published_iso'], 'dateModified': dates['date_modified_iso']}
     if p['page_id'] == 'SAT-003':
         page['mainEntity'] = {'@id': canon + '#recipe'}
         graph.append(page)
         graph.append({'@type': 'Recipe', '@id': canon + '#recipe', 'name': p['title'], 'description': desc,
+                      'datePublished': dates['date_published_iso'], 'dateModified': dates['date_modified_iso'],
                       'image': {'@type': 'ImageObject', 'url': image, 'width': 1600, 'height': 900},
                       'author': {'@id': SITE_URL + AUTHOR_URL + '#person'},
                       'reviewedBy': {'@id': SITE_URL + REVIEWER_URL + '#person'},
@@ -243,6 +282,7 @@ def schema_article(p, desc, breadcrumbs):
         page['mainEntity'] = {'@id': canon + '#article'}
         graph.append(page)
         art = {'@type': 'Article', '@id': canon + '#article', 'headline': p['title'], 'description': desc,
+               'datePublished': dates['date_published_iso'], 'dateModified': dates['date_modified_iso'],
                'image': {'@type': 'ImageObject', 'url': image, 'width': 1600, 'height': 900},
                'mainEntityOfPage': {'@id': canon + '#webpage'}, 'isPartOf': {'@id': SITE_URL + '/#website'},
                'author': {'@id': SITE_URL + AUTHOR_URL + '#person'},
@@ -359,31 +399,35 @@ def render_base_kwargs(meta_title, desc, canonical, og_type, og_image_abs, og_im
                 og_image_abs=og_image_abs, og_image_alt=og_image_alt, schema_json=schema_json)
 
 
-def trust_schema(filename, title, desc, canon, breadcrumb):
+def trust_schema(filename, title, desc, canon, breadcrumb, dates):
     if filename == 'author-farrukh-abdullah.md':
         graph = base_graph(include_people=False) + [
             {'@type': 'ProfilePage', '@id': canon + '#webpage', 'url': canon, 'name': title, 'description': desc,
              'isPartOf': {'@id': SITE_URL + '/#website'}, 'mainEntity': {'@id': canon + '#person'},
-             'breadcrumb': {'@id': canon + '#breadcrumb'}, 'inLanguage': 'en'},
+             'breadcrumb': {'@id': canon + '#breadcrumb'}, 'inLanguage': 'en',
+             'datePublished': dates['date_published_iso'], 'dateModified': dates['date_modified_iso']},
             {'@type': 'Person', '@id': canon + '#person', 'name': AUTHOR_NAME, 'url': canon,
              'jobTitle': 'Researcher and Writer', 'email': 'mailto:' + AUTHOR_EMAIL,
-             'sameAs': [AUTHOR_LINKEDIN], 'worksFor': {'@id': SITE_URL + '/#organization'}},
+             'image': SITE_URL + AUTHOR_IMAGE, 'sameAs': [AUTHOR_LINKEDIN], 'worksFor': {'@id': SITE_URL + '/#organization'}},
             breadcrumb
         ]
     elif filename == 'editor-moniqua-nelson-tunley.md':
         graph = base_graph(include_people=False) + [
             {'@type': 'ProfilePage', '@id': canon + '#webpage', 'url': canon, 'name': title, 'description': desc,
              'isPartOf': {'@id': SITE_URL + '/#website'}, 'mainEntity': {'@id': canon + '#person'},
-             'breadcrumb': {'@id': canon + '#breadcrumb'}, 'inLanguage': 'en'},
+             'breadcrumb': {'@id': canon + '#breadcrumb'}, 'inLanguage': 'en',
+             'datePublished': dates['date_published_iso'], 'dateModified': dates['date_modified_iso']},
             {'@type': 'Person', '@id': canon + '#person', 'name': REVIEWER_NAME, 'url': canon,
-             'jobTitle': 'Editorial Reviewer', 'sameAs': [REVIEWER_PROFILE_URL],
+             'jobTitle': 'Editorial Reviewer', 'image': SITE_URL + REVIEWER_IMAGE,
+             'sameAs': [REVIEWER_PROFILE_URL],
              'knowsAbout': ['skinks', 'skink conservation biology', 'habitat fragmentation', 'taxonomy-sensitive editorial review']},
             breadcrumb
         ]
     else:
         graph = base_graph() + [
             {'@type': 'WebPage', '@id': canon + '#webpage', 'name': title, 'url': canon, 'description': desc,
-             'isPartOf': {'@id': SITE_URL + '/#website'}, 'breadcrumb': {'@id': canon + '#breadcrumb'}, 'inLanguage': 'en'},
+             'isPartOf': {'@id': SITE_URL + '/#website'}, 'breadcrumb': {'@id': canon + '#breadcrumb'}, 'inLanguage': 'en',
+             'datePublished': dates['date_published_iso'], 'dateModified': dates['date_modified_iso']},
             breadcrumb
         ]
     return json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False)
@@ -396,10 +440,12 @@ def build():
     shutil.copytree(PUBLIC, DIST, dirs_exist_ok=True)
 
     pages = {}
-    for f in sorted((CONTENT / 'articles').glob('*.md')):
+    article_files = sorted((CONTENT / 'articles').glob('*.md'))
+    for idx, f in enumerate(article_files):
         fm, body = split_frontmatter(f.read_text(encoding='utf-8'))
         fm['body_md'] = body
         fm['description'] = description_from(body, fm['title'])
+        fm['dates'] = article_dates(idx)
         pages[fm['page_id']] = fm
 
     children = {k: [] for k in pages}
@@ -420,8 +466,8 @@ def build():
         title_tag = seo_title(p)
         related = related_guides(pid, pages, children, limit=3)
         rendered = article_t.render(
-            **render_base_kwargs(title_tag, desc, canon, 'article', SITE_URL + hero, p['hero_alt'], schema_article(p, desc, crumbs)),
-            breadcrumbs=crumbs, title=p['title'], eyebrow=eyebrow_label(p),
+            **render_base_kwargs(title_tag, desc, canon, 'article', SITE_URL + hero, p['hero_alt'], schema_article(p, desc, crumbs, p['dates'])),
+            **p['dates'], breadcrumbs=crumbs, title=p['title'], eyebrow=eyebrow_label(p),
             scientific_name=(scientific_name(p['body_md']) if pid in SINGLE_SPECIES_PAGES else ''),
             hero_image=hero, hero_alt=p['hero_alt'], toc=toc, body_html=html, children=related
         )
@@ -430,7 +476,8 @@ def build():
         op.write_text(rendered, encoding='utf-8')
 
     trust_t = env.get_template('trust.html')
-    for f in sorted((CONTENT / 'trust').glob('*.md')):
+    trust_files = sorted((CONTENT / 'trust').glob('*.md'))
+    for idx, f in enumerate(trust_files):
         if f.name not in TRUST_ROUTES:
             raise KeyError(f'Missing trust route for {f.name}')
         body = f.read_text(encoding='utf-8')
@@ -442,10 +489,17 @@ def build():
         url = TRUST_ROUTES[f.name]
         canon = SITE_URL + url
         breadcrumb = schema_breadcrumb(canon, [{'title': short_label(title), 'url': url}])
-        schema = trust_schema(f.name, title, desc, canon, breadcrumb)
+        dates = trust_dates(idx)
+        schema = trust_schema(f.name, title, desc, canon, breadcrumb, dates)
+        profile_image = ''
+        profile_alt = ''
+        if f.name == 'author-farrukh-abdullah.md':
+            profile_image, profile_alt = AUTHOR_IMAGE, AUTHOR_NAME
+        elif f.name == 'editor-moniqua-nelson-tunley.md':
+            profile_image, profile_alt = REVIEWER_IMAGE, REVIEWER_NAME
         rendered = trust_t.render(
             **render_base_kwargs(f'{title} | Skinkpedia', desc, canon, 'website', SITE_URL + DEFAULT_OG_IMAGE, 'Representative skinks from Skinkpedia', schema),
-            title=title, body_html=html
+            **dates, title=title, body_html=html, trust_label=trust_label(f.name), profile_image=profile_image, profile_alt=profile_alt
         )
         op = out_path(url)
         op.parent.mkdir(parents=True, exist_ok=True)
