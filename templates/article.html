@@ -7,9 +7,7 @@
       {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
       <h1>{{ title }}</h1>
       {% if scientific_name %}<p class="scientific-name"><em>{{ scientific_name }}</em></p>{% endif %}
-      <p class="byline">Research and written by <a href="/authors/farrukh-abdullah/">Farrukh Abdullah</a></p>
-      <p class="byline">Reviewed and edited by <a href="/editors/moniqua-nelson-tunley/">Moniqua Nelson-Tunley</a></p>
-      <p class="byline page-dates js-page-dates" aria-label="Publication dates">Published <time>2026</time> · Updated <time>2026</time></p>
+      <p class="byline article-meta-line js-page-dates" aria-label="Article credits and dates">By <a href="/authors/farrukh-abdullah/">Farrukh Abdullah</a> · Reviewed by <a href="/editors/moniqua-nelson-tunley/">Moniqua Nelson-Tunley</a> · Published <time>2026</time> · Updated <time>2026</time></p>
     </header>
     <figure class="article-hero"><img src="{{ hero_image }}?v=5" width="1600" height="900" alt="{{ hero_alt }}" loading="eager" fetchpriority="high"></figure>
     <div class="article-main-grid">
@@ -23,7 +21,7 @@
 <script>
 (function(){
   function fmt(d){return d.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});}
-  function paint(idx){idx=Math.max(0,idx);var pub=new Date(2026,0,6+(idx*2));var mod=new Date(2026,6,1+idx);document.querySelectorAll('.js-page-dates').forEach(function(el){el.innerHTML='Published <time datetime="'+pub.toISOString().slice(0,10)+'">'+fmt(pub)+'</time> · Updated <time datetime="'+mod.toISOString().slice(0,10)+'">'+fmt(mod)+'</time>';});}
+  function paint(idx){idx=Math.max(0,idx);var pub=new Date(2026,0,6+(idx*2));var mod=new Date(2026,6,1+idx);document.querySelectorAll('.js-page-dates').forEach(function(el){el.innerHTML='By <a href="/authors/farrukh-abdullah/">Farrukh Abdullah</a> · Reviewed by <a href="/editors/moniqua-nelson-tunley/">Moniqua Nelson-Tunley</a> · Published <time datetime="'+pub.toISOString().slice(0,10)+'">'+fmt(pub)+'</time> · Updated <time datetime="'+mod.toISOString().slice(0,10)+'">'+fmt(mod)+'</time>';});}
   fetch('/sitemap.xml').then(function(r){return r.text();}).then(function(xml){var doc=new DOMParser().parseFromString(xml,'application/xml');var paths=[].map.call(doc.querySelectorAll('loc'),function(n){return new URL(n.textContent).pathname;}).sort();var idx=paths.indexOf(location.pathname);paint(idx>=0?idx:0);}).catch(function(){paint(0);});
 })();
 </script>
