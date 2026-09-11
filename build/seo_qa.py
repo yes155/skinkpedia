@@ -23,6 +23,23 @@ TRUST_PAGE_PATHS={
 PROFILE_PREFIXES=('/authors/','/editors/')
 RECIPE_PATHS={'/extras/cullen-skink-recipe/'}
 
+
+def node_types(node):
+    t=node.get('@type')
+    return t if isinstance(t,list) else [t]
+
+
+def first_node(graph, typename):
+    for node in graph:
+        if isinstance(node,dict) and typename in node_types(node):
+            return node
+    return None
+
+
+def has_dates(node):
+    return bool(isinstance(node,dict) and node.get('datePublished') and node.get('dateModified'))
+
+
 for f in index_files:
     s=BeautifulSoup(f.read_text(encoding='utf-8'),'html.parser')
     title=s.title.get_text(' ',strip=True) if s.title else ''
@@ -56,7 +73,7 @@ for f in index_files:
         types=[]
         for node in graph:
             if not isinstance(node,dict): continue
-            t=node.get('@type'); types += t if isinstance(t,list) else [t]
+            types += node_types(node)
         article_schema += types.count('Article')
         recipe_schema += types.count('Recipe')
         breadcrumb_schema += types.count('BreadcrumbList')
@@ -68,14 +85,30 @@ for f in index_files:
         is_profile_page = canonical_path.startswith(PROFILE_PREFIXES)
         is_recipe_page = canonical_path in RECIPE_PATHS
 
+        if not is_home and not any(has_dates(node) for node in graph if isinstance(node,dict)):
+            errors.append(f'{f}: missing datePublished/dateModified schema')
+
         if is_recipe_page:
-            if 'Recipe' not in types: errors.append(f'{f}: recipe page missing Recipe schema')
+            recipe=first_node(graph,'Recipe')
+            if not recipe: errors.append(f'{f}: recipe page missing Recipe schema')
+            else:
+                for field in ['author','reviewedBy','datePublished','dateModified']:
+                    if not recipe.get(field): errors.append(f'{f}: Recipe schema missing {field}')
             if 'Article' in types: warnings.append(f'{f}: recipe page also has Article schema')
         elif is_profile_page:
-            if 'ProfilePage' not in types: errors.append(f'{f}: profile page missing ProfilePage schema')
+            profile=first_node(graph,'ProfilePage'); person=first_node(graph,'Person')
+            if not profile: errors.append(f'{f}: profile page missing ProfilePage schema')
+            if not person: errors.append(f'{f}: profile page missing Person schema')
+            else:
+                for field in ['image','sameAs','jobTitle']:
+                    if not person.get(field): errors.append(f'{f}: Person schema missing {field}')
             if 'Article' in types: warnings.append(f'{f}: profile page also has Article schema')
         elif not is_home and not is_trust_page:
-            if 'Article' not in types: errors.append(f'{f}: article page missing Article schema')
+            article=first_node(graph,'Article')
+            if not article: errors.append(f'{f}: article page missing Article schema')
+            else:
+                for field in ['author','reviewedBy','datePublished','dateModified']:
+                    if not article.get(field): errors.append(f'{f}: Article schema missing {field}')
     rows.append((f,can,title,desc))
 
 for value,n in Counter(titles).items():
