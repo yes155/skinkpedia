@@ -1,0 +1,164 @@
+{
+  "entities": {
+    "scincidae": {
+      "@type": "Taxon",
+      "name": "Scincidae",
+      "alternateName": "Skinks",
+      "taxonRank": "family",
+      "sameAs": [
+        "https://www.wikidata.org/wiki/Q272206",
+        "https://en.wikipedia.org/wiki/Scincidae",
+        "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=66056",
+        "https://eol.org/pages/8109"
+      ],
+      "identifier": [
+        {"@type": "PropertyValue", "propertyID": "Wikidata", "value": "Q272206"},
+        {"@type": "PropertyValue", "propertyID": "NCBI Taxonomy", "value": "66056"}
+      ]
+    },
+    "tiliqua": {
+      "@type": "Taxon",
+      "name": "Tiliqua",
+      "alternateName": "Blue-tongued skinks",
+      "taxonRank": "genus",
+      "parentTaxon": {"@type": "Taxon", "name": "Scincidae", "sameAs": "https://www.wikidata.org/wiki/Q272206"},
+      "sameAs": ["https://en.wikipedia.org/wiki/Blue-tongued_skink", "https://species.wikimedia.org/wiki/Tiliqua"]
+    },
+    "tiliqua_scincoides": {
+      "@type": "Taxon",
+      "name": "Tiliqua scincoides",
+      "alternateName": "Eastern blue-tongued lizard",
+      "taxonRank": "species",
+      "parentTaxon": {"@type": "Taxon", "name": "Scincidae", "sameAs": "https://www.wikidata.org/wiki/Q272206"},
+      "sameAs": ["https://www.wikidata.org/wiki/Q781954", "https://en.wikipedia.org/wiki/Tiliqua_scincoides"],
+      "identifier": [{"@type": "PropertyValue", "propertyID": "Wikidata", "value": "Q781954"}]
+    },
+    "tiliqua_rugosa": {
+      "@type": "Taxon",
+      "name": "Tiliqua rugosa",
+      "alternateName": "Shingleback skink",
+      "taxonRank": "species",
+      "parentTaxon": {"@type": "Taxon", "name": "Scincidae", "sameAs": "https://www.wikidata.org/wiki/Q272206"},
+      "sameAs": ["https://www.wikidata.org/wiki/Q572677", "https://en.wikipedia.org/wiki/Tiliqua_rugosa", "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=8527"],
+      "identifier": [{"@type": "PropertyValue", "propertyID": "Wikidata", "value": "Q572677"}]
+    },
+    "tribolonotus_gracilis": {
+      "@type": "Taxon",
+      "name": "Tribolonotus gracilis",
+      "alternateName": "Red-eyed crocodile skink",
+      "taxonRank": "species",
+      "parentTaxon": {"@type": "Taxon", "name": "Scincidae", "sameAs": "https://www.wikidata.org/wiki/Q272206"},
+      "sameAs": ["https://www.wikidata.org/wiki/Q2000955", "https://en.wikipedia.org/wiki/Red-eyed_crocodile_skink", "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?name=Tribolonotus+gracilis"],
+      "identifier": [{"@type": "PropertyValue", "propertyID": "Wikidata", "value": "Q2000955"}]
+    },
+    "plestiodon_fasciatus": {
+      "@type": "Taxon",
+      "name": "Plestiodon fasciatus",
+      "alternateName": "Five-lined skink",
+      "taxonRank": "species",
+      "parentTaxon": {"@type": "Taxon", "name": "Scincidae", "sameAs": "https://www.wikidata.org/wiki/Q272206"},
+      "sameAs": ["https://www.wikidata.org/wiki/Q167366", "https://en.wikipedia.org/wiki/Plestiodon_fasciatus", "https://www.cnah.org/cnah/taxon.aspx?taxon=Plestiodon_fasciatus"],
+      "identifier": [{"@type": "PropertyValue", "propertyID": "Wikidata", "value": "Q167366"}]
+    },
+    "plestiodon_reynoldsi": {
+      "@type": "Taxon",
+      "name": "Plestiodon reynoldsi",
+      "alternateName": "Florida sand skink",
+      "taxonRank": "species",
+      "parentTaxon": {"@type": "Taxon", "name": "Scincidae", "sameAs": "https://www.wikidata.org/wiki/Q272206"},
+      "sameAs": ["https://en.wikipedia.org/wiki/Florida_sand_skink", "https://webapps.fhsu.edu/cnah/taxon.aspx?taxon=Plestiodon_reynoldsi"]
+    },
+    "scincus_scincus": {
+      "@type": "Taxon",
+      "name": "Scincus scincus",
+      "alternateName": "Sandfish skink",
+      "taxonRank": "species",
+      "parentTaxon": {"@type": "Taxon", "name": "Scincidae", "sameAs": "https://www.wikidata.org/wiki/Q272206"},
+      "sameAs": ["https://www.wikidata.org/wiki/Q620576", "https://en.wikipedia.org/wiki/Scincus_scincus", "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=155317"],
+      "identifier": [{"@type": "PropertyValue", "propertyID": "Wikidata", "value": "Q620576"}]
+    },
+    "corucia_zebrata": {
+      "@type": "Taxon",
+      "name": "Corucia zebrata",
+      "alternateName": "Monkey-tailed skink",
+      "taxonRank": "species",
+      "parentTaxon": {"@type": "Taxon", "name": "Scincidae", "sameAs": "https://www.wikidata.org/wiki/Q272206"},
+      "sameAs": ["https://en.wikipedia.org/wiki/Solomon_Islands_skink", "https://reptile-database.reptarium.cz/Corucia/zebrata", "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=96731", "https://cites.org/eng/taxonomy/term/4128"],
+      "identifier": [{"@type": "PropertyValue", "propertyID": "NCBI Taxonomy", "value": "96731"}]
+    },
+    "egernia_stokesii": {
+      "@type": "Taxon",
+      "name": "Egernia stokesii",
+      "alternateName": "Gidgee skink",
+      "taxonRank": "species",
+      "parentTaxon": {"@type": "Taxon", "name": "Scincidae", "sameAs": "https://www.wikidata.org/wiki/Q272206"},
+      "sameAs": ["https://www.wikidata.org/wiki/Q2036204", "https://en.wikipedia.org/wiki/Stokes%27s_skink"],
+      "identifier": [{"@type": "PropertyValue", "propertyID": "Wikidata", "value": "Q2036204"}]
+    },
+    "chalcides_ocellatus": {
+      "@type": "Taxon",
+      "name": "Chalcides ocellatus",
+      "alternateName": "Ocellated skink",
+      "taxonRank": "species",
+      "parentTaxon": {"@type": "Taxon", "name": "Scincidae", "sameAs": "https://www.wikidata.org/wiki/Q272206"},
+      "sameAs": ["https://en.wikipedia.org/wiki/Chalcides_ocellatus", "https://species.wikimedia.org/wiki/Chalcides_ocellatus"]
+    },
+    "plestiodon_laticeps": {
+      "@type": "Taxon",
+      "name": "Plestiodon laticeps",
+      "alternateName": "Broad-headed skink",
+      "taxonRank": "species",
+      "parentTaxon": {"@type": "Taxon", "name": "Scincidae", "sameAs": "https://www.wikidata.org/wiki/Q272206"},
+      "sameAs": ["https://en.wikipedia.org/wiki/Plestiodon_laticeps", "https://cnah.org/cnah/taxon.aspx?taxon=Plestiodon_laticeps"]
+    },
+    "plestiodon_skiltonianus": {
+      "@type": "Taxon",
+      "name": "Plestiodon skiltonianus",
+      "alternateName": "Western skink",
+      "taxonRank": "species",
+      "parentTaxon": {"@type": "Taxon", "name": "Scincidae", "sameAs": "https://www.wikidata.org/wiki/Q272206"},
+      "sameAs": ["https://en.wikipedia.org/wiki/Western_skink", "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100793/Plestiodon_skiltonianus"]
+    },
+    "scincella_lateralis": {
+      "@type": "Taxon",
+      "name": "Scincella lateralis",
+      "alternateName": "Ground skink",
+      "taxonRank": "species",
+      "parentTaxon": {"@type": "Taxon", "name": "Scincidae", "sameAs": "https://www.wikidata.org/wiki/Q272206"},
+      "sameAs": ["https://en.wikipedia.org/wiki/Scincella_lateralis", "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=155319"],
+      "identifier": [{"@type": "PropertyValue", "propertyID": "NCBI Taxonomy", "value": "155319"}]
+    },
+    "dibamus_irregularis": {
+      "@type": "Taxon",
+      "name": "Dibamus irregularis",
+      "alternateName": "Chu Yang Sin blind skink",
+      "taxonRank": "species",
+      "parentTaxon": {"@type": "Taxon", "name": "Dibamidae"},
+      "sameAs": ["https://reptile-database.reptarium.cz/Dibamus/irregularis", "https://doi.org/10.11646/zootaxa.5760.5.1"],
+      "identifier": [{"@type": "PropertyValue", "propertyID": "ZooBank", "value": "urn:lsid:zoobank.org:act:6599ddAF-9B7A-451F-BCdF"}]
+    },
+    "scincella_verecunda": {
+      "@type": "Taxon",
+      "name": "Scincella verecunda",
+      "alternateName": "Lincang ground skink",
+      "taxonRank": "species",
+      "parentTaxon": {"@type": "Taxon", "name": "Scincidae", "sameAs": "https://www.wikidata.org/wiki/Q272206"},
+      "sameAs": ["https://reptile-database.reptarium.cz/Scincella/verecunda", "https://species.wikimedia.org/wiki/Scincella"],
+      "identifier": [{"@type": "PropertyValue", "propertyID": "ZooBank", "value": "40E7FA52-0E05-4861-BDA7-8D9F90DCC727"}]
+    },
+    "reptile_husbandry": {
+      "@type": "Thing",
+      "name": "Reptile husbandry",
+      "alternateName": "reptile care"
+    },
+    "wildlife_identification": {
+      "@type": "Thing",
+      "name": "Wildlife identification"
+    },
+    "conservation_biology": {
+      "@type": "Thing",
+      "name": "Conservation biology",
+      "sameAs": ["https://www.wikidata.org/wiki/Q104021"]
+    }
+  }
+}
