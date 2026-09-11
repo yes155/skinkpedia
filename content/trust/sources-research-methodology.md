@@ -32,6 +32,12 @@ For example:
 - a snout-to-vent length should not be labeled as total length;
 - a group-housing observation in the wild should not automatically become a captive cohabitation recommendation.
 
+## Citation display
+
+Skinkpedia keeps source accountability visible while avoiding reference sections that become outbound-link blocks.
+
+Article reference sections may list source names, authors, journal names, agencies, publication years, titles and DOI numbers as plain bibliographic text. Live external source links are reserved for trust, profile, contact, policy or methodology pages when they help readers verify the site, contributor background or editorial process.
+
 ## Taxonomy
 
 Accepted scientific names are checked against current taxonomic sources where taxonomy affects identification or page meaning.
@@ -67,6 +73,12 @@ The following require periodic rechecking:
 - conservation assessments.
 
 A price table is a dated snapshot, not a permanent market average.
+
+## Review and update signals
+
+Main article pages display named writer/reviewer links and visible published/updated dates near the title. Structured data repeats the same author, reviewer and date information so search systems and assistive tools can read it consistently.
+
+Update dates are changed when the page receives a meaningful factual, structural, source or review update. Minor formatting-only changes do not require rewriting the article’s factual position.
 
 ## Internal linking and subject boundaries
 
