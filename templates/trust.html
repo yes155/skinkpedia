@@ -2,18 +2,10 @@
 <div class="container trust-page">
   <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span aria-current="page">{{ title }}</span></nav>
   <article class="reading-width">
-    {% if '/authors/farrukh-abdullah/' in canonical %}<img src="/assets/people/farrukh-abdullah.svg?v=1" width="160" height="160" alt="Farrukh Abdullah" style="width:160px;height:160px;border-radius:999px;object-fit:cover;margin:0 0 22px;box-shadow:0 10px 28px rgba(32,40,35,.14)">{% endif %}
-    {% if '/editors/moniqua-nelson-tunley/' in canonical %}<img src="/assets/people/moniqua-nelson-tunley.svg?v=1" width="160" height="160" alt="Moniqua Nelson-Tunley" style="width:160px;height:160px;border-radius:999px;object-fit:cover;margin:0 0 22px;box-shadow:0 10px 28px rgba(32,40,35,.14)">{% endif %}
+    {% if profile_image %}<img src="{{ profile_image }}?v=2" width="160" height="160" alt="{{ profile_alt }}" style="width:160px;height:160px;border-radius:999px;object-fit:cover;margin:0 0 22px;box-shadow:0 10px 28px rgba(32,40,35,.14)">{% endif %}
     <h1>{{ title }}</h1>
-    <p class="byline page-dates js-page-dates" aria-label="Publication dates">Published <time>2026</time> · Updated <time>2026</time></p>
+    <p class="byline article-meta-line" aria-label="Page credits and dates">{{ trust_label|safe }} · Published <time datetime="{{ date_published_iso }}">{{ date_published_display }}</time> · Updated <time datetime="{{ date_modified_iso }}">{{ date_modified_display }}</time></p>
     <div class="article-body">{{ body_html|safe }}</div>
   </article>
 </div>
-<script>
-(function(){
-  function fmt(d){return d.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});}
-  function paint(idx){idx=Math.max(0,idx);var pub=new Date(2026,0,6+(idx*2));var mod=new Date(2026,6,1+idx);document.querySelectorAll('.js-page-dates').forEach(function(el){el.innerHTML='Published <time datetime="'+pub.toISOString().slice(0,10)+'">'+fmt(pub)+'</time> · Updated <time datetime="'+mod.toISOString().slice(0,10)+'">'+fmt(mod)+'</time>';});}
-  fetch('/sitemap.xml').then(function(r){return r.text();}).then(function(xml){var doc=new DOMParser().parseFromString(xml,'application/xml');var paths=[].map.call(doc.querySelectorAll('loc'),function(n){return new URL(n.textContent).pathname;}).sort();var idx=paths.indexOf(location.pathname);paint(idx>=0?idx:0);}).catch(function(){paint(0);});
-})();
-</script>
 {% endblock %}
