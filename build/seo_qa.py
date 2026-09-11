@@ -7,6 +7,13 @@ from config import SITE_URL
 
 ROOT=Path(__file__).resolve().parents[1]; DIST=ROOT/'dist'
 errors=[]; warnings=[]; rows=[]
+
+try:
+    from entity_graph import enrich_dist_entity_graph
+    enrich_dist_entity_graph(DIST)
+except Exception as e:
+    errors.append(f'entity graph enrichment failed: {e}')
+
 index_files=list(DIST.rglob('index.html'))
 canonicals=[]; titles=[]; descs=[]
 article_schema=0; recipe_schema=0; breadcrumb_schema=0; profile_schema=0
@@ -38,6 +45,17 @@ def first_node(graph, typename):
 
 def has_dates(node):
     return bool(isinstance(node,dict) and node.get('datePublished') and node.get('dateModified'))
+
+
+def has_entity_link(value):
+    if isinstance(value, dict):
+        same=value.get('sameAs') or value.get('url') or value.get('identifier')
+        if same:
+            return True
+        return any(has_entity_link(v) for v in value.values())
+    if isinstance(value, list):
+        return any(has_entity_link(v) for v in value)
+    return False
 
 
 for f in index_files:
@@ -94,6 +112,8 @@ for f in index_files:
             else:
                 for field in ['author','reviewedBy','datePublished','dateModified']:
                     if not recipe.get(field): errors.append(f'{f}: Recipe schema missing {field}')
+                if not recipe.get('about') or not has_entity_link(recipe.get('about')):
+                    errors.append(f'{f}: Recipe schema missing linked about entity')
             if 'Article' in types: warnings.append(f'{f}: recipe page also has Article schema')
         elif is_profile_page:
             profile=first_node(graph,'ProfilePage'); person=first_node(graph,'Person')
@@ -109,6 +129,8 @@ for f in index_files:
             else:
                 for field in ['author','reviewedBy','datePublished','dateModified']:
                     if not article.get(field): errors.append(f'{f}: Article schema missing {field}')
+                if not article.get('about') or not has_entity_link(article.get('about')):
+                    errors.append(f'{f}: Article schema missing linked about entity')
     rows.append((f,can,title,desc))
 
 for value,n in Counter(titles).items():
@@ -133,6 +155,7 @@ s404=BeautifulSoup((DIST/'404.html').read_text(encoding='utf-8'),'html.parser')
 r404=s404.find('meta',attrs={'name':'robots'})
 if not r404 or 'noindex' not in r404.get('content',''): errors.append('404 missing noindex')
 if not (DIST/'llms.txt').exists(): warnings.append('llms.txt missing')
+if not (DIST/'entity-graph.json').exists(): errors.append('entity-graph.json missing')
 
 print('SEO QA', 'PASS' if not errors else 'FAIL')
 print('Indexable pages:',len(index_files),'Article schema:',article_schema,'Recipe:',recipe_schema,'Breadcrumb:',breadcrumb_schema,'ProfilePage:',profile_schema)
