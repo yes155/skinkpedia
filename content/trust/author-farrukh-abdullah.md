@@ -1,30 +1,43 @@
 # Farrukh Abdullah
 
-**Farrukh Abdullah is the founder, publisher and primary research/editorial author of Skinkpedia.**
+**Farrukh Abdullah is the researcher, writer and publisher behind Skinkpedia.**
 
-His role on the site is to research, organize and explain evidence about skink biology, identification and husbandry in a form that is useful to readers.
+Farrukh researches and writes the Skinkpedia guides so readers can understand skink care, species differences, identification, biology and natural history without confusing general skink facts with species-specific husbandry requirements.
 
-## Editorial approach
+**Role:** Researcher & Writer
+
+**Focus:** Practical husbandry, enclosure setup, diet, health explanations, species comparisons, identification and evidence-led skink natural history.
+
+## What Farrukh does for Skinkpedia
 
 For Skinkpedia, Farrukh's work includes:
 
+- researching each article from scientific, veterinary, conservation and specialist sources;
 - building and maintaining the site's topical architecture;
 - reviewing species identity before transferring factual values;
-- comparing sources and resolving contradictory claims;
 - separating family-wide guidance from species-specific husbandry;
+- comparing sources when claims disagree;
+- keeping health content educational rather than diagnostic;
 - maintaining contextual internal links between related articles;
-- updating time-sensitive taxonomy, conservation and buying information.
+- updating time-sensitive taxonomy, conservation and care information.
 
-## Scope of expertise
+## Editorial scope
 
-Farrukh is presented as an **editorial researcher and publisher**, not as a veterinarian or licensed wildlife professional.
+Farrukh is presented as an editorial researcher and writer, not as a veterinarian, zoologist or licensed wildlife professional.
 
-Veterinary, conservation and scientific claims on Skinkpedia should therefore be grounded in appropriate external sources rather than personal authority.
+Veterinary, conservation and scientific claims on Skinkpedia should therefore be grounded in appropriate external evidence and, where needed, reviewed by a qualified or topic-relevant reviewer.
+
+## Contact and profiles
+
+- [LinkedIn](https://www.linkedin.com/in/farrukh-abdullah-5a218424/)
+- [Email](mailto:f.abdullah79@gmail.com)
 
 ## Editorial policies
 
 Read more about:
 
+- [About Skinkpedia](/about/)
 - [Editorial Policy](/editorial-policy/)
 - [Sources & Research Methodology](/sources-research-methodology/)
 - [Corrections Policy](/corrections-policy/)
+- [Privacy Policy](/privacy/)
