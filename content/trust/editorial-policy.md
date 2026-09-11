@@ -2,6 +2,16 @@
 
 **Skinkpedia publishes evidence-led educational content about skinks and aims to keep factual precision, species identity and reader safety ahead of search traffic or commercial value.**
 
+Research and writing are handled by [Farrukh Abdullah](/authors/farrukh-abdullah/). Editorial review is handled by [Moniqua Nelson-Tunley](/editors/moniqua-nelson-tunley/).
+
+## Editorial roles
+
+**Researcher & Writer:** Farrukh Abdullah researches, writes and maintains Skinkpedia articles, topical structure, internal links and publication updates.
+
+**Editorial Reviewer:** Moniqua Nelson-Tunley reviews Skinkpedia's skink content for biological care, source accuracy, taxonomy-sensitive wording and appropriate evidence boundaries.
+
+Skinkpedia does not present either role as a substitute for veterinary diagnosis, wildlife-permit advice or emergency animal care.
+
 ## Page ownership and topic boundaries
 
 Each article has a defined subject.
