@@ -8,6 +8,7 @@
       <h1>{{ title }}</h1>
       {% if scientific_name %}<p class="scientific-name"><em>{{ scientific_name }}</em></p>{% endif %}
       <p class="byline">Research and written by <a href="/authors/farrukh-abdullah/">Farrukh Abdullah</a></p>
+      <p class="byline">Reviewed and edited by <a href="/editors/moniqua-nelson-tunley/">Moniqua Nelson-Tunley</a></p>
     </header>
     <figure class="article-hero"><img src="{{ hero_image }}?v=5" width="1600" height="900" alt="{{ hero_alt }}" loading="eager" fetchpriority="high"></figure>
     <div class="article-main-grid">
@@ -15,7 +16,7 @@
       <div class="article-body reading-width">{{ body_html|safe }}</div>
     </div>
     {% if children %}<section class="related-block"><div class="section-heading"><p class="eyebrow">Continue exploring</p><h2>Related guides</h2></div><div class="card-grid">{% for c in children %}<article class="link-card"><h3><a href="{{ c.url }}">{{ c.title }}</a></h3><p>{{ c.description }}</p></article>{% endfor %}</div></section>{% endif %}
-    <aside class="author-box"><div class="author-avatar" aria-hidden="true">FA</div><div><p class="eyebrow">About the author</p><h2><a href="/authors/farrukh-abdullah/">Farrukh Abdullah</a></h2><p>Founder, publisher and primary research/editorial author of Skinkpedia. Editorial claims are grounded in external scientific, veterinary, government and specialist sources.</p></div></aside>
+    <aside class="author-box"><div class="author-avatar" aria-hidden="true">FA</div><div><p class="eyebrow">About the author</p><h2><a href="/authors/farrukh-abdullah/">Farrukh Abdullah</a></h2><p>Researcher, writer and publisher of Skinkpedia. Editorial claims are grounded in external scientific, veterinary, government and specialist sources.</p><p><a href="/editors/moniqua-nelson-tunley/">Editorial review by Moniqua Nelson-Tunley</a>.</p></div></aside>
   </article>
 </div>
 {% endblock %}
