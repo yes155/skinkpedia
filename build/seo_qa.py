@@ -10,11 +10,25 @@ errors=[]; warnings=[]; rows=[]
 index_files=list(DIST.rglob('index.html'))
 canonicals=[]; titles=[]; descs=[]
 article_schema=0; recipe_schema=0; breadcrumb_schema=0; profile_schema=0
+
+TRUST_PAGE_PATHS={
+    '/about/',
+    '/editorial-policy/',
+    '/corrections-policy/',
+    '/sources-research-methodology/',
+    '/contact/',
+    '/privacy/',
+    '/affiliate-disclosure/',
+}
+PROFILE_PREFIXES=('/authors/','/editors/')
+RECIPE_PATHS={'/extras/cullen-skink-recipe/'}
+
 for f in index_files:
     s=BeautifulSoup(f.read_text(encoding='utf-8'),'html.parser')
     title=s.title.get_text(' ',strip=True) if s.title else ''
     desc=(s.find('meta',attrs={'name':'description'}) or {}).get('content','') if s.find('meta',attrs={'name':'description'}) else ''
     can=(s.find('link',rel='canonical') or {}).get('href','') if s.find('link',rel='canonical') else ''
+    canonical_path=urlparse(can).path if can else ''
     titles.append(title); descs.append(desc); canonicals.append(can)
     if not can.startswith(SITE_URL+'/'): errors.append(f'{f}: canonical not on SITE_URL: {can}')
     if len(title)>65: warnings.append(f'{f}: title {len(title)} chars')
@@ -48,11 +62,20 @@ for f in index_files:
         breadcrumb_schema += types.count('BreadcrumbList')
         profile_schema += types.count('ProfilePage')
         if can!=SITE_URL+'/' and 'BreadcrumbList' not in types: errors.append(f'{f}: missing BreadcrumbList schema')
-        if '/authors/farrukh-abdullah/' not in can and can!=SITE_URL+'/' and '/about/' not in can and '/editorial-policy/' not in can and '/corrections-policy/' not in can and '/sources-research-methodology/' not in can and '/contact/' not in can and '/affiliate-disclosure/' not in can:
-            if '/extras/cullen-skink-recipe/' in can:
-                if 'Recipe' not in types: errors.append(f'{f}: recipe page missing Recipe schema')
-                if 'Article' in types: warnings.append(f'{f}: recipe page also has Article schema')
-            elif 'Article' not in types: errors.append(f'{f}: article page missing Article schema')
+
+        is_home = can == SITE_URL+'/'
+        is_trust_page = canonical_path in TRUST_PAGE_PATHS
+        is_profile_page = canonical_path.startswith(PROFILE_PREFIXES)
+        is_recipe_page = canonical_path in RECIPE_PATHS
+
+        if is_recipe_page:
+            if 'Recipe' not in types: errors.append(f'{f}: recipe page missing Recipe schema')
+            if 'Article' in types: warnings.append(f'{f}: recipe page also has Article schema')
+        elif is_profile_page:
+            if 'ProfilePage' not in types: errors.append(f'{f}: profile page missing ProfilePage schema')
+            if 'Article' in types: warnings.append(f'{f}: profile page also has Article schema')
+        elif not is_home and not is_trust_page:
+            if 'Article' not in types: errors.append(f'{f}: article page missing Article schema')
     rows.append((f,can,title,desc))
 
 for value,n in Counter(titles).items():
