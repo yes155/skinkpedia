@@ -12,6 +12,20 @@ Research and writing are handled by [Farrukh Abdullah](/authors/farrukh-abdullah
 
 Skinkpedia does not present either role as a substitute for veterinary diagnosis, wildlife-permit advice or emergency animal care.
 
+## How pages show responsibility
+
+Every main article displays a compact editorial line near the title with:
+
+- the named writer;
+- the named reviewer;
+- linked contributor profile pages;
+- a visible publication date;
+- a visible update date.
+
+Author and reviewer profile pages include a role summary, scope of review, public profile links where available and structured data that identifies the person behind the contribution.
+
+Trust pages such as About, Sources, Corrections, Privacy, Affiliate Disclosure and Contact explain who is responsible for the site, how content is made, how corrections are handled and how readers can reach the publisher.
+
 ## Page ownership and topic boundaries
 
 Each article has a defined subject.
