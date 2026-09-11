@@ -12,6 +12,7 @@ REGISTRY_PATH = ROOT / 'data' / 'entity_registry.json'
 
 
 ENTITY_RULES = [
+    (('cullen skink',), 'cullen_skink'),
     (('dibamus irregularis',), 'dibamus_irregularis'),
     (('scincella verecunda',), 'scincella_verecunda'),
     (('red-eyed crocodile skink', 'red eyed crocodile skink', 'tribolonotus gracilis'), 'tribolonotus_gracilis'),
@@ -35,7 +36,15 @@ CONSERVATION_TERMS = ('conservation', 'protected', 'legal', 'law', 'wildlife')
 
 
 def load_registry() -> dict:
-    return json.loads(REGISTRY_PATH.read_text(encoding='utf-8'))['entities']
+    entities = json.loads(REGISTRY_PATH.read_text(encoding='utf-8'))['entities']
+    entities.setdefault('cullen_skink', {
+        '@type': 'Thing',
+        'name': 'Cullen skink',
+        'alternateName': 'Scottish smoked haddock soup',
+        'sameAs': ['https://www.wikidata.org/wiki/Q613665', 'https://en.wikipedia.org/wiki/Cullen_skink'],
+        'identifier': [{'@type': 'PropertyValue', 'propertyID': 'Wikidata', 'value': 'Q613665'}]
+    })
+    return entities
 
 
 def clone_entity(entities: dict, key: str) -> dict:
