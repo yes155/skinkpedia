@@ -8,6 +8,8 @@ Her review role helps keep Skinkpedia's articles biologically careful, evidence-
 
 **Focus:** Skink biology, conservation context, source accuracy, taxonomy-sensitive wording and evidence boundaries.
 
+**Public profile:** [Massey University profile](https://www.massey.ac.nz/~strewick/moniqua.htm)
+
 ## Public research background
 
 Moniqua Nelson-Tunley is listed in public academic records as the author of a Massey University MSc thesis on population fragmentation in the small-scaled skink (*Oligosoma microlepis*), including the consequences of landscape transformation for distribution, morphology and genetics.
