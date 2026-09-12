@@ -11,20 +11,26 @@ This report applies the Skink project prelaunch operating system and the semanti
 
 ## Semantic scorecard
 
-| Pillar | Launch finding | Status |
-|---|---|---|
-| Technical retrieval efficiency | Static output, reproducible build, generated sitemap, robots.txt, 404, QA gates, no CMS runtime dependency. | Pass |
-| Ontological mapping / entities | Entity registry exists. Article and recipe JSON-LD are enriched with linked `about` and `mentions` entities. Major skink taxa are connected to public entity records where exact matches are available. | Pass |
-| Information architecture | URLs are hub/cluster aligned. New species pages belong under Biology. Peripheral Cullen skink content is separated from reptile topical flow. | Pass |
-| Answer-first / retrieval readiness | Core pages use direct explanatory introductions, stable headings, visible attribution, and related guides. Further extractable answer-box optimization can continue after launch. | Pass, improve post-launch |
-| Metadata / media context | Canonicals, title overrides, OG/Twitter metadata, hero alt text, image mapping, and cache-busted hero rendering are handled by templates and generator. | Pass |
-| E-E-A-T / trust surface | About, Editorial Policy, Author, Reviewer, Sources, Corrections, Privacy, Affiliate Disclosure, and Contact pages exist. Visible bylines/reviewer links and dates are present. | Pass |
-| Structured data / quality | Article, Recipe, WebPage, WebSite, Organization, ProfilePage, Person, BreadcrumbList, and Taxon data are generated and validated by SEO QA. | Pass |
+| Pillar | Launch finding | Score | Status |
+|---|---|---:|---|
+| Technical retrieval efficiency | Static output, reproducible build, generated sitemap with lastmod, robots.txt, 404, QA gates, no CMS runtime dependency. | 14/15 | Pass |
+| Ontological mapping / entities | Entity registry exists. Article and recipe JSON-LD are enriched with linked `about` and `mentions` entities. Major skink taxa are connected to public entity records where exact matches are available. | 14/15 | Pass |
+| Information architecture | URLs are hub/cluster aligned. New species pages belong under Biology. Peripheral Cullen skink content is separated from reptile topical flow. | 14/15 | Pass |
+| Answer-first / retrieval readiness | Article pages now render a visible `Quick answer` extraction block immediately after H1/byline and before the hero/body. QA fails if the block is missing, too short, or below the hero/body. | 14/15 | Pass |
+| Metadata / media context | Canonicals, title overrides, OG/Twitter metadata, hero alt text, image mapping, and cache-busted hero rendering are handled by templates and generator. | 9/10 | Pass |
+| E-E-A-T / trust surface | About, Editorial Policy, Author, Reviewer, Sources, Corrections, Privacy, Affiliate Disclosure, and Contact pages exist. Visible bylines/reviewer links and dates are present. | 14/15 | Pass |
+| Structured data / quality | Article, Recipe, WebPage, WebSite, Organization, ProfilePage, Person, BreadcrumbList, and Taxon data are generated and validated by SEO QA. | 14/15 | Pass |
+
+**Applicable score:** 93/100 normalized semantic launch score.  
+**Scored total:** 79/85 applicable points.  
+**Local proximity score:** Not applicable for this non-local informational site.
 
 ## Implemented hard launch gates
 
 - `build/build.py` generates 55 articles, 9 trust pages, homepage, sitemap, robots, llms.txt, and structured data.
-- `build/qa.py` checks hard content, asset, internal linking, reference-link, and output integrity requirements.
+- `templates/article.html` renders a visible answer-first extraction block above the hero image and article body.
+- `public/assets/css/answer-first.css` styles the extraction block without changing the main article copy.
+- `build/qa.py` checks hard content, asset, answer-first extraction, internal linking, reference-link, and output integrity requirements.
 - `build/seo_qa.py` runs final technical SEO validation and triggers entity graph enrichment before validation.
 - `build/entity_graph.py` enriches JSON-LD, appends the entity summary to `llms.txt`, writes `/entity-graph.json`, and injects sitemap `lastmod` values.
 - `data/entity_registry.json` stores controlled public-entity references for Skinkpedia's major taxa and concepts.
@@ -35,6 +41,12 @@ This report applies the Skink project prelaunch operating system and the semanti
 The entity graph is intentionally conservative. Exact public identifiers are used only where the entity match is clear enough. Generic skink pages default to Scincidae. Species pages and strongly species-specific pages receive more precise Taxon entities when matched by title, H1, description, or schema text.
 
 Cullen skink is handled as a food entity, not a reptile entity, to prevent knowledge-graph contamination between the soup meaning and the reptile meaning.
+
+## Answer-first extraction notes
+
+Every article page now places a concise `Quick answer` block near the top of the HTML, after the article title/byline and before the hero image, table of contents, and article body. This improves candidate-passage extraction for Google AI Overviews, ChatGPT-style retrieval, Perplexity-style citation, and ordinary featured-snippet style scanning.
+
+The block is generated from the page's already-approved description/source text rather than introducing new unsupported claims. Deeper article sections still carry the nuance, species scope, exceptions, warnings, and evidence.
 
 ## E-E-A-T notes
 
