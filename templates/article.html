@@ -9,6 +9,11 @@
       {% if scientific_name %}<p class="scientific-name"><em>{{ scientific_name }}</em></p>{% endif %}
       <p class="byline article-meta-line" aria-label="Article credits and dates">By <a href="/authors/farrukh-abdullah/">Farrukh Abdullah</a> · Reviewed by <a href="/editors/moniqua-nelson-tunley/">Moniqua Nelson-Tunley</a> · Published <time datetime="{{ date_published_iso }}">{{ date_published_display }}</time> · Updated <time datetime="{{ date_modified_iso }}">{{ date_modified_display }}</time></p>
     </header>
+    <section class="answer-first reading-width" aria-label="Quick answer" data-extraction-target="answer-first">
+      <p class="answer-first-kicker">Quick answer</p>
+      <p class="answer-first-text"><strong>{{ description }}</strong></p>
+      <p class="answer-first-note">Use this summary as the direct answer, then check the sections below for species scope, exceptions and evidence.</p>
+    </section>
     <figure class="article-hero"><img src="{{ hero_image }}?v=5" width="1600" height="900" alt="{{ hero_alt }}" loading="eager" fetchpriority="high"></figure>
     <div class="article-main-grid">
       {% if toc %}<aside class="toc" aria-label="On this page"><details open><summary>On this page</summary><ol>{% for h in toc %}<li class="toc-level-{{ h.level }}"><a href="#{{ h.id }}">{{ h.text }}</a></li>{% endfor %}</ol></details></aside>{% endif %}
