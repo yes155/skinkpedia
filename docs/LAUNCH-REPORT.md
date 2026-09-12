@@ -15,10 +15,10 @@ This report applies the Skink project prelaunch operating system and the semanti
 |---|---|---:|---|
 | Technical retrieval efficiency | Static output, reproducible build, generated sitemap with lastmod, robots.txt, 404, QA gates, no CMS runtime dependency. | 14/15 | Pass |
 | Ontological mapping / entities | Entity registry exists. Article and recipe JSON-LD are enriched with linked `about` and `mentions` entities. Major skink taxa are connected to public entity records where exact matches are available. | 14/15 | Pass |
-| Information architecture | URLs are hub/cluster aligned. New species pages belong under Biology. Peripheral Cullen skink content is separated from reptile topical flow. | 14/15 | Pass |
+| Information architecture | URLs are hub/cluster aligned. New species pages belong under Biology. Cullen skink content is separated from reptile topical flow. `/resources/` now centralizes downloads, datasets, frameworks and tools. | 14/15 | Pass |
 | Answer-first / retrieval readiness | Article pages render a visible `At a glance` extraction block as the first element inside the article body, after the hero image and beside the table of contents. QA fails if the block is missing, too short, or placed outside the article-body opening position. | 14/15 | Pass |
-| Metadata / media / information gain | Canonicals, title overrides, OG/Twitter metadata, hero alt text, image mapping, cache-busted hero rendering, PDF sheets, CSV datasets, comparison matrices, care frameworks and an embedded setup tool are generated or validated. | 10/10 | Pass |
-| E-E-A-T / trust surface | About, Editorial Policy, Author, Reviewer, Sources, Corrections, Privacy, Affiliate Disclosure, and Contact pages exist. Visible bylines/reviewer links and dates are present. | 14/15 | Pass |
+| Metadata / media / information gain | Canonicals, title overrides, OG/Twitter metadata, hero alt text, image mapping, cache-busted hero rendering, PDF sheets, CSV datasets, comparison matrices, care frameworks, resource hub and embedded setup tool are generated or validated. | 10/10 | Pass |
+| E-E-A-T / trust surface | About, Editorial Policy, Author, Reviewer, Sources, Corrections, Privacy, Affiliate Disclosure, Contact and Resources surfaces exist. Visible bylines/reviewer links and dates are present. | 14/15 | Pass |
 | Structured data / quality | Article, Recipe, WebPage, WebSite, Organization, ProfilePage, Person, BreadcrumbList, and Taxon data are generated and validated by SEO QA. | 14/15 | Pass |
 
 **Applicable score:** 94/100 normalized semantic launch score.  
@@ -30,10 +30,11 @@ This report applies the Skink project prelaunch operating system and the semanti
 - `build/build.py` generates 55 articles, 9 trust pages, homepage, sitemap, robots, llms.txt, and structured data.
 - `templates/article.html` renders a visible answer-first extraction block inside the article body after the hero image.
 - `public/assets/css/answer-first.css` styles the extraction block as a compact in-flow summary rather than a disruptive top-of-page callout.
+- `public/assets/css/information-gain.css` styles comparison/resource blocks and the resources hub.
 - `build/qa.py` checks hard content, asset, answer-first extraction, internal linking, reference-link, and output integrity requirements.
-- `build/seo_qa.py` runs final technical SEO validation and triggers entity graph enrichment plus information-gain resource generation before validation.
+- `build/seo_qa.py` runs final technical SEO validation and triggers information-gain resource preparation before entity graph enrichment.
 - `build/entity_graph.py` enriches JSON-LD, appends the entity summary to `llms.txt`, writes `/entity-graph.json`, and injects sitemap `lastmod` values.
-- `build/info_gain_resources.py` generates PDF sheets, CSV datasets, comparison/resource blocks and the supplies-page substrate estimator.
+- `build/info_gain_resources.py` validates committed static PDF/CSV resources, generates `/resources/`, injects comparison/resource blocks, writes the resource manifest and keeps the supplies-page substrate estimator available.
 - `data/entity_registry.json` stores controlled public-entity references for Skinkpedia's major taxa and concepts.
 - Trust pages and article templates render compact visible attribution and dates with proper `<time datetime>` elements.
 
@@ -53,23 +54,25 @@ The block is generated from the page's already-approved description/source text 
 
 Skinkpedia now includes a pre-launch information-gain package rather than relying only on ordinary article prose:
 
+- `/resources/` page for all sheets, datasets, tools and frameworks
 - pet skink comparison matrix on `/pet-skinks/`
 - skink care decision framework on `/skink-care/`
 - health triage checklist on `/skink-care/health/`
 - printable checklist/resource block on `/skink-care/supplies-checklist/`
 - blue-tongue type comparison dataset on `/pet-skinks/blue-tongue-skink/types/`
 - substrate volume estimator embedded in the supplies checklist
-- four generated PDF sheets under `/assets/downloads/`
-- two CSV decision datasets under `/assets/data/`
+- four committed PDF sheets under `/assets/downloads/`
+- two committed CSV decision datasets under `/assets/data/`
 - resource manifest under `/assets/data/skinkpedia-resource-manifest.json`
 
-The resources are generated during SEO QA so deployment fails if the assets are missing, invalid, or not injected into the priority pages.
+The PDF and CSV resources are now committed static assets, not only sandbox previews. SEO QA validates that the assets exist, that PDFs are valid PDF files, that the resources page exists, and that priority pages receive their comparison/resource blocks.
 
 ## E-E-A-T notes
 
-Skinkpedia now exposes a complete trust surface:
+Skinkpedia now exposes a complete trust/resource surface:
 
 - About page
+- Resources page
 - Editorial Policy
 - Author profile
 - Reviewer profile
@@ -88,10 +91,11 @@ The reviewer page uses careful public-research wording and does not inflate cred
 3. Confirm `https://skinkpedia.online/robots.txt` declares the sitemap.
 4. Confirm `https://skinkpedia.online/llms.txt` loads and includes the entity graph section.
 5. Confirm `https://skinkpedia.online/entity-graph.json` loads.
-6. Confirm the generated PDF sheets and CSV datasets load from `/assets/downloads/` and `/assets/data/`.
-7. Submit `https://skinkpedia.online/sitemap.xml` in Google Search Console.
-8. Submit or import the site in Bing Webmaster Tools.
-9. Use URL Inspection for the homepage, main hubs, trust pages, author/reviewer pages, and the two new species pages.
+6. Confirm `https://skinkpedia.online/resources/` loads.
+7. Confirm the committed PDF sheets and CSV datasets load from `/assets/downloads/` and `/assets/data/`.
+8. Submit `https://skinkpedia.online/sitemap.xml` in Google Search Console.
+9. Submit or import the site in Bing Webmaster Tools.
+10. Use URL Inspection for the homepage, main hubs, resources page, trust pages, author/reviewer pages, and the two new species pages.
 
 ## Priority inspection URLs
 
@@ -101,6 +105,7 @@ https://skinkpedia.online/skinks/
 https://skinkpedia.online/pet-skinks/
 https://skinkpedia.online/skink-care/
 https://skinkpedia.online/skink-biology/
+https://skinkpedia.online/resources/
 https://skinkpedia.online/about/
 https://skinkpedia.online/editorial-policy/
 https://skinkpedia.online/sources-research-methodology/
