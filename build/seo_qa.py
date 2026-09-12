@@ -7,12 +7,19 @@ from config import SITE_URL
 
 ROOT=Path(__file__).resolve().parents[1]; DIST=ROOT/'dist'
 errors=[]; warnings=[]; rows=[]
+resource_manifest={}
 
 try:
     from entity_graph import enrich_dist_entity_graph
     enrich_dist_entity_graph(DIST)
 except Exception as e:
     errors.append(f'entity graph enrichment failed: {e}')
+
+try:
+    from info_gain_resources import apply_info_gain_resources
+    resource_manifest=apply_info_gain_resources(DIST)
+except Exception as e:
+    errors.append(f'information gain resource generation failed: {e}')
 
 index_files=list(DIST.rglob('index.html'))
 canonicals=[]; titles=[]; descs=[]
@@ -172,9 +179,34 @@ else:
     except Exception as e:
         errors.append(f'entity-graph.json invalid: {e}')
 
+required_resources=[
+    'assets/downloads/skink-care-quick-start.pdf',
+    'assets/downloads/blue-tongue-skink-setup-checklist.pdf',
+    'assets/downloads/pet-skink-species-comparison-matrix.pdf',
+    'assets/downloads/skink-health-triage-sheet.pdf',
+    'assets/data/skink-species-decision-dataset.csv',
+    'assets/data/skink-care-decision-framework.csv',
+    'assets/data/skinkpedia-resource-manifest.json',
+]
+for rel in required_resources:
+    p=DIST/rel
+    if not p.exists():
+        errors.append(f'missing information-gain resource: {rel}')
+    elif p.suffix == '.pdf':
+        data=p.read_bytes()[:4]
+        if data != b'%PDF': errors.append(f'information-gain PDF is invalid: {rel}')
+        if p.stat().st_size < 2500: errors.append(f'information-gain PDF suspiciously small: {rel}')
+    elif p.stat().st_size < 100:
+        errors.append(f'information-gain data file suspiciously small: {rel}')
+if resource_manifest.get('missing_pages'):
+    errors.append('information-gain enrichment missing pages: '+', '.join(resource_manifest.get('missing_pages',[])))
+if len(resource_manifest.get('injected_pages',[])) < 5:
+    errors.append('information-gain enrichment did not reach all priority pages')
+
 print('SEO QA', 'PASS' if not errors else 'FAIL')
 print('Indexable pages:',len(index_files),'Article schema:',article_schema,'Recipe:',recipe_schema,'Breadcrumb:',breadcrumb_schema,'ProfilePage:',profile_schema)
 print('Titles >65:',sum(len(x)>65 for x in titles),'Descriptions <105:',sum(len(x)<105 for x in descs),'Descriptions >165:',sum(len(x)>165 for x in descs))
+print('Information gain resources:',len(resource_manifest.get('pdfs',[])),'PDFs,',len(resource_manifest.get('datasets',[])),'datasets,',len(resource_manifest.get('injected_pages',[])),'pages enriched')
 if warnings:
     print('WARNINGS:',len(warnings))
     for w in warnings[:80]: print('-',w)
