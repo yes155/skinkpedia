@@ -22,7 +22,7 @@ Build output: `dist/`
 - **Build output directory:** `dist`
 - **Root directory:** repository root
 
-The QA commands intentionally fail the deployment when hard content, asset, linking, answer-first extraction, schema, entity-graph, sitemap, or technical-SEO gates fail.
+The QA commands intentionally fail the deployment when hard content, asset, answer-first extraction, information-gain, linking, schema, entity-graph, sitemap, or technical-SEO gates fail.
 
 ## Production domain
 
@@ -46,17 +46,23 @@ If the final domain is different, update `SITE_URL` in `build/config.py` before 
 - Article / Recipe / Breadcrumb / Organization / WebSite / WebPage / ProfilePage / Person / Taxon schema
 - author and reviewer profile schema with images and sameAs links
 - Taxon/entity registry with public knowledge-graph links where exact matches are available
-- visible answer-first extraction blocks on article pages
+- answer-first / At a glance extraction blocks
+- information-gain sections on priority pages
+- generated PDF care sheets and checklists
+- generated CSV decision datasets
+- a substrate volume estimator embedded in the supplies checklist
 - automated general QA
 - automated answer-first extraction validation
 - automated technical SEO QA
 - automated entity-graph enrichment and validation
+- automated information-gain resource generation and validation
 
 ## Final launch workflow
 
 1. Build the static site.
 2. Run general QA, including article answer-first extraction checks.
 3. Enrich generated HTML with entity graph data during SEO QA.
-4. Verify schema, canonicals, sitemap, robots.txt, llms.txt, `entity-graph.json`, dates, linked entities, and extraction-ready summaries.
-5. Deploy the `dist/` output.
-6. Submit `https://skinkpedia.online/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
+4. Generate comparison tables, care decision frameworks, PDF sheets, CSV datasets, and priority resource blocks during SEO QA.
+5. Verify schema, canonicals, sitemap, robots.txt, llms.txt, `entity-graph.json`, dates, linked entities, extraction-ready summaries, and information-gain resources.
+6. Deploy the `dist/` output.
+7. Submit `https://skinkpedia.online/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
