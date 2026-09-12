@@ -10,16 +10,16 @@ errors=[]; warnings=[]; rows=[]
 resource_manifest={}
 
 try:
+    from info_gain_resources import apply_info_gain_resources
+    resource_manifest=apply_info_gain_resources(DIST)
+except Exception as e:
+    errors.append(f'information gain resource preparation failed: {e}')
+
+try:
     from entity_graph import enrich_dist_entity_graph
     enrich_dist_entity_graph(DIST)
 except Exception as e:
     errors.append(f'entity graph enrichment failed: {e}')
-
-try:
-    from info_gain_resources import apply_info_gain_resources
-    resource_manifest=apply_info_gain_resources(DIST)
-except Exception as e:
-    errors.append(f'information gain resource generation failed: {e}')
 
 index_files=list(DIST.rglob('index.html'))
 canonicals=[]; titles=[]; descs=[]
@@ -33,6 +33,7 @@ TRUST_PAGE_PATHS={
     '/contact/',
     '/privacy/',
     '/affiliate-disclosure/',
+    '/resources/',
 }
 PROFILE_PREFIXES=('/authors/','/editors/')
 RECIPE_PATHS={'/extras/cullen-skink-recipe/'}
@@ -198,15 +199,19 @@ for rel in required_resources:
         if p.stat().st_size < 2500: errors.append(f'information-gain PDF suspiciously small: {rel}')
     elif p.stat().st_size < 100:
         errors.append(f'information-gain data file suspiciously small: {rel}')
+if not (DIST/'resources'/'index.html').exists():
+    errors.append('resources page missing: /resources/')
 if resource_manifest.get('missing_pages'):
     errors.append('information-gain enrichment missing pages: '+', '.join(resource_manifest.get('missing_pages',[])))
 if len(resource_manifest.get('injected_pages',[])) < 5:
     errors.append('information-gain enrichment did not reach all priority pages')
+if resource_manifest.get('resource_page') != '/resources/':
+    errors.append('information-gain resources page was not generated')
 
 print('SEO QA', 'PASS' if not errors else 'FAIL')
 print('Indexable pages:',len(index_files),'Article schema:',article_schema,'Recipe:',recipe_schema,'Breadcrumb:',breadcrumb_schema,'ProfilePage:',profile_schema)
 print('Titles >65:',sum(len(x)>65 for x in titles),'Descriptions <105:',sum(len(x)<105 for x in descs),'Descriptions >165:',sum(len(x)>165 for x in descs))
-print('Information gain resources:',len(resource_manifest.get('pdfs',[])),'PDFs,',len(resource_manifest.get('datasets',[])),'datasets,',len(resource_manifest.get('injected_pages',[])),'pages enriched')
+print('Information gain resources:',len(resource_manifest.get('pdfs',[])),'PDFs,',len(resource_manifest.get('datasets',[])),'datasets,',len(resource_manifest.get('injected_pages',[])),'pages enriched, resource page:',resource_manifest.get('resource_page'))
 if warnings:
     print('WARNINGS:',len(warnings))
     for w in warnings[:80]: print('-',w)
