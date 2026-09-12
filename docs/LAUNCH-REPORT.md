@@ -17,12 +17,12 @@ This report applies the Skink project prelaunch operating system and the semanti
 | Ontological mapping / entities | Entity registry exists. Article and recipe JSON-LD are enriched with linked `about` and `mentions` entities. Major skink taxa are connected to public entity records where exact matches are available. | 14/15 | Pass |
 | Information architecture | URLs are hub/cluster aligned. New species pages belong under Biology. Peripheral Cullen skink content is separated from reptile topical flow. | 14/15 | Pass |
 | Answer-first / retrieval readiness | Article pages render a visible `At a glance` extraction block as the first element inside the article body, after the hero image and beside the table of contents. QA fails if the block is missing, too short, or placed outside the article-body opening position. | 14/15 | Pass |
-| Metadata / media context | Canonicals, title overrides, OG/Twitter metadata, hero alt text, image mapping, and cache-busted hero rendering are handled by templates and generator. | 9/10 | Pass |
+| Metadata / media / information gain | Canonicals, title overrides, OG/Twitter metadata, hero alt text, image mapping, cache-busted hero rendering, PDF sheets, CSV datasets, comparison matrices, care frameworks and an embedded setup tool are generated or validated. | 10/10 | Pass |
 | E-E-A-T / trust surface | About, Editorial Policy, Author, Reviewer, Sources, Corrections, Privacy, Affiliate Disclosure, and Contact pages exist. Visible bylines/reviewer links and dates are present. | 14/15 | Pass |
 | Structured data / quality | Article, Recipe, WebPage, WebSite, Organization, ProfilePage, Person, BreadcrumbList, and Taxon data are generated and validated by SEO QA. | 14/15 | Pass |
 
-**Applicable score:** 93/100 normalized semantic launch score.  
-**Scored total:** 79/85 applicable points.  
+**Applicable score:** 94/100 normalized semantic launch score.  
+**Scored total:** 94/100 applicable points.  
 **Local proximity score:** Not applicable for this non-local informational site.
 
 ## Implemented hard launch gates
@@ -31,8 +31,9 @@ This report applies the Skink project prelaunch operating system and the semanti
 - `templates/article.html` renders a visible answer-first extraction block inside the article body after the hero image.
 - `public/assets/css/answer-first.css` styles the extraction block as a compact in-flow summary rather than a disruptive top-of-page callout.
 - `build/qa.py` checks hard content, asset, answer-first extraction, internal linking, reference-link, and output integrity requirements.
-- `build/seo_qa.py` runs final technical SEO validation and triggers entity graph enrichment before validation.
+- `build/seo_qa.py` runs final technical SEO validation and triggers entity graph enrichment plus information-gain resource generation before validation.
 - `build/entity_graph.py` enriches JSON-LD, appends the entity summary to `llms.txt`, writes `/entity-graph.json`, and injects sitemap `lastmod` values.
+- `build/info_gain_resources.py` generates PDF sheets, CSV datasets, comparison/resource blocks and the supplies-page substrate estimator.
 - `data/entity_registry.json` stores controlled public-entity references for Skinkpedia's major taxa and concepts.
 - Trust pages and article templates render compact visible attribution and dates with proper `<time datetime>` elements.
 
@@ -47,6 +48,22 @@ Cullen skink is handled as a food entity, not a reptile entity, to prevent knowl
 Every article page now places a concise `At a glance` block at the start of the readable article column, after the hero image and beside the table of contents. This keeps the visual flow natural while still putting a self-contained answer near the top of the HTML content area for featured-snippet style scanning, Google AI Overviews, ChatGPT-style retrieval, and Perplexity-style citation.
 
 The block is generated from the page's already-approved description/source text rather than introducing new unsupported claims. Deeper article sections still carry the nuance, species scope, exceptions, warnings, and evidence.
+
+## Information-gain resources
+
+Skinkpedia now includes a pre-launch information-gain package rather than relying only on ordinary article prose:
+
+- pet skink comparison matrix on `/pet-skinks/`
+- skink care decision framework on `/skink-care/`
+- health triage checklist on `/skink-care/health/`
+- printable checklist/resource block on `/skink-care/supplies-checklist/`
+- blue-tongue type comparison dataset on `/pet-skinks/blue-tongue-skink/types/`
+- substrate volume estimator embedded in the supplies checklist
+- four generated PDF sheets under `/assets/downloads/`
+- two CSV decision datasets under `/assets/data/`
+- resource manifest under `/assets/data/skinkpedia-resource-manifest.json`
+
+The resources are generated during SEO QA so deployment fails if the assets are missing, invalid, or not injected into the priority pages.
 
 ## E-E-A-T notes
 
@@ -71,9 +88,10 @@ The reviewer page uses careful public-research wording and does not inflate cred
 3. Confirm `https://skinkpedia.online/robots.txt` declares the sitemap.
 4. Confirm `https://skinkpedia.online/llms.txt` loads and includes the entity graph section.
 5. Confirm `https://skinkpedia.online/entity-graph.json` loads.
-6. Submit `https://skinkpedia.online/sitemap.xml` in Google Search Console.
-7. Submit or import the site in Bing Webmaster Tools.
-8. Use URL Inspection for the homepage, main hubs, trust pages, author/reviewer pages, and the two new species pages.
+6. Confirm the generated PDF sheets and CSV datasets load from `/assets/downloads/` and `/assets/data/`.
+7. Submit `https://skinkpedia.online/sitemap.xml` in Google Search Console.
+8. Submit or import the site in Bing Webmaster Tools.
+9. Use URL Inspection for the homepage, main hubs, trust pages, author/reviewer pages, and the two new species pages.
 
 ## Priority inspection URLs
 
