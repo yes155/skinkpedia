@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import copy
 import json
+import re
+import xml.etree.ElementTree as ET
+from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -9,6 +12,7 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / 'data' / 'entity_registry.json'
+SITEMAP_NS = 'http://www.sitemaps.org/schemas/sitemap/0.9'
 
 
 ENTITY_RULES = [
@@ -115,6 +119,16 @@ def page_kind(canonical: str) -> str:
     return 'article'
 
 
+def extract_modified_date(data: dict) -> str:
+    graph = data.get('@graph', []) if isinstance(data, dict) else []
+    for typename in ('Article', 'Recipe', 'ProfilePage', 'WebPage'):
+        for node in find_nodes(graph, typename):
+            value = node.get('dateModified')
+            if isinstance(value, str) and re.match(r'^\d{4}-\d{2}-\d{2}', value):
+                return value[:10]
+    return date.today().isoformat()
+
+
 def enrich_jsonld(data: dict, soup: BeautifulSoup, entities: dict) -> tuple[dict, str, list[str]]:
     graph = data.get('@graph') if isinstance(data, dict) else None
     if not isinstance(graph, list):
@@ -164,6 +178,26 @@ def enrich_jsonld(data: dict, soup: BeautifulSoup, entities: dict) -> tuple[dict
     return data, primary_key, mention_keys
 
 
+def update_sitemap_lastmod(dist: Path, modified_by_url: dict[str, str]) -> None:
+    sitemap = dist / 'sitemap.xml'
+    if not sitemap.exists():
+        return
+    ET.register_namespace('', SITEMAP_NS)
+    tree = ET.parse(sitemap)
+    root = tree.getroot()
+    ns = {'s': SITEMAP_NS}
+    fallback = date.today().isoformat()
+    for url_node in root.findall('s:url', ns):
+        loc = url_node.find('s:loc', ns)
+        if loc is None or not loc.text:
+            continue
+        lastmod = url_node.find('s:lastmod', ns)
+        if lastmod is None:
+            lastmod = ET.SubElement(url_node, f'{{{SITEMAP_NS}}}lastmod')
+        lastmod.text = modified_by_url.get(loc.text, fallback)
+    tree.write(sitemap, encoding='utf-8', xml_declaration=True)
+
+
 def append_llms_summary(dist: Path, summary: dict) -> None:
     llms = dist / 'llms.txt'
     if not llms.exists():
@@ -175,6 +209,11 @@ def append_llms_summary(dist: Path, summary: dict) -> None:
     lines = [marker.rstrip(), '', 'Skinkpedia uses structured entity references for major skink taxa, contributor profiles, source methodology and care concepts.']
     for key, count in sorted(summary.items()):
         lines.append(f'- {key}: {count} page(s)')
+    lines.extend([
+        '',
+        'Machine-readable entity output: https://skinkpedia.online/entity-graph.json',
+        'Freshness output: sitemap URLs include lastmod values derived from page-level dateModified metadata.'
+    ])
     llms.write_text(text.rstrip() + '\n\n' + '\n'.join(lines) + '\n', encoding='utf-8')
 
 
@@ -185,6 +224,7 @@ def enrich_dist_entity_graph(dist: Path | None = None) -> dict:
     entities = load_registry()
     summary: dict[str, int] = {}
     manifest = []
+    modified_by_url: dict[str, str] = {}
 
     for html_file in sorted(dist.rglob('index.html')):
         soup = BeautifulSoup(html_file.read_text(encoding='utf-8'), 'html.parser')
@@ -198,20 +238,27 @@ def enrich_dist_entity_graph(dist: Path | None = None) -> dict:
         data, primary_key, mentions = enrich_jsonld(data, soup, entities)
         if not primary_key:
             continue
+        modified = extract_modified_date(data)
         script.string = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
         html_file.write_text(str(soup), encoding='utf-8')
         summary[primary_key] = summary.get(primary_key, 0) + 1
         can = soup.find('link', rel='canonical')
+        canonical = can.get('href') if can else ''
+        if canonical:
+            modified_by_url[canonical] = modified
         manifest.append({
             'path': str(html_file.relative_to(dist)).replace('\\', '/'),
-            'canonical': can.get('href') if can else '',
+            'canonical': canonical,
             'primaryEntity': primary_key,
             'mentions': mentions,
+            'dateModified': modified,
         })
 
+    update_sitemap_lastmod(dist, modified_by_url)
     (dist / 'entity-graph.json').write_text(json.dumps({'pages': manifest, 'entityCounts': summary}, ensure_ascii=False, indent=2), encoding='utf-8')
     append_llms_summary(dist, summary)
     print('Entity graph enriched', len(manifest), 'pages')
+    print('Sitemap lastmod updated', len(modified_by_url), 'URLs')
     return {'pages': len(manifest), 'entities': summary}
 
 
