@@ -22,7 +22,7 @@ Build output: `dist/`
 - **Build output directory:** `dist`
 - **Root directory:** repository root
 
-The QA commands intentionally fail the deployment when hard content, asset, answer-first extraction, information-gain, linking, schema, entity-graph, sitemap, or technical-SEO gates fail.
+The QA commands intentionally fail the deployment when hard content, asset, answer-first extraction, static information-gain resources, linking, schema, entity-graph, sitemap, or technical-SEO gates fail.
 
 ## Production domain
 
@@ -36,7 +36,7 @@ If the final domain is different, update `SITE_URL` in `build/config.py` before 
 
 - 55 topical-map articles
 - 55 mapped hero images
-- 9 trust pages
+- 9 trust pages plus generated `/resources/` page
 - homepage
 - 404 page
 - sitemap.xml with canonical URLs and `lastmod`
@@ -48,21 +48,21 @@ If the final domain is different, update `SITE_URL` in `build/config.py` before 
 - Taxon/entity registry with public knowledge-graph links where exact matches are available
 - answer-first / At a glance extraction blocks
 - information-gain sections on priority pages
-- generated PDF care sheets and checklists
-- generated CSV decision datasets
+- committed static PDF care sheets and checklists under `public/assets/downloads/`
+- committed static CSV decision datasets under `public/assets/data/`
 - a substrate volume estimator embedded in the supplies checklist
 - automated general QA
 - automated answer-first extraction validation
 - automated technical SEO QA
 - automated entity-graph enrichment and validation
-- automated information-gain resource generation and validation
+- automated information-gain resource validation and page/block injection
 
 ## Final launch workflow
 
 1. Build the static site.
 2. Run general QA, including article answer-first extraction checks.
-3. Enrich generated HTML with entity graph data during SEO QA.
-4. Generate comparison tables, care decision frameworks, PDF sheets, CSV datasets, and priority resource blocks during SEO QA.
-5. Verify schema, canonicals, sitemap, robots.txt, llms.txt, `entity-graph.json`, dates, linked entities, extraction-ready summaries, and information-gain resources.
+3. Prepare the resources page, comparison tables, care decision frameworks, PDF links, CSV dataset links, and priority resource blocks during SEO QA.
+4. Enrich generated HTML with entity graph data during SEO QA.
+5. Verify schema, canonicals, sitemap, robots.txt, llms.txt, `entity-graph.json`, dates, linked entities, extraction-ready summaries, static downloads, and information-gain resources.
 6. Deploy the `dist/` output.
 7. Submit `https://skinkpedia.online/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
