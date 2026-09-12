@@ -5,7 +5,7 @@ import re, sys
 ROOT=Path(__file__).resolve().parents[1]; DIST=ROOT/'dist'
 html=list(DIST.rglob('*.html'))
 errs=[]
-article_pages=0; related_blocks=0; reference_pages=0
+article_pages=0; related_blocks=0; reference_pages=0; answer_blocks=0
 source_articles=list((ROOT/'content'/'articles').glob('*.md'))
 source_trust=list((ROOT/'content'/'trust').glob('*.md'))
 expected_html=1+len(source_articles)+len(source_trust)+1  # homepage + articles + trust + 404
@@ -42,6 +42,21 @@ for f in html:
     article=s.select_one('.article-layout')
     if article:
         article_pages += 1
+        answer=article.select_one('.answer-first[data-extraction-target="answer-first"]')
+        if not answer:
+            errs.append(f'{f}: missing answer-first extraction block')
+        else:
+            answer_blocks += 1
+            answer_text=' '.join(answer.get_text(' ',strip=True).split())
+            if not answer_text.lower().startswith('quick answer'):
+                errs.append(f'{f}: answer-first block does not start with Quick answer label')
+            if len(answer_text)<115:
+                errs.append(f'{f}: answer-first block too short ({len(answer_text)} chars)')
+            art_html=str(article)
+            if 'class="answer-first' in art_html and 'class="article-hero' in art_html and art_html.find('class="answer-first')>art_html.find('class="article-hero'):
+                errs.append(f'{f}: answer-first block appears after hero image')
+            if 'class="answer-first' in art_html and 'class="article-body' in art_html and art_html.find('class="answer-first')>art_html.find('class="article-body'):
+                errs.append(f'{f}: answer-first block appears after article body')
         related=article.select_one('.related-block')
         if not related:
             errs.append(f'{f}: missing Related guides block')
@@ -89,7 +104,7 @@ for f in html:
     for bad in ['notebook.google.com','[SOURCE NEEDED BEFORE PUBLICATION]','file://','C:\\','D:\\']:
         if bad.lower() in txt.lower(): errs.append(f'{f}: banned artifact {bad}')
 print('QA', 'PASS' if not errs else 'FAIL')
-print('Article pages:',article_pages,'Related blocks:',related_blocks,'Reference sections:',reference_pages)
+print('Article pages:',article_pages,'Answer-first blocks:',answer_blocks,'Related blocks:',related_blocks,'Reference sections:',reference_pages)
 if errs:
     for e in errs[:200]: print('-',e)
     sys.exit(1)
