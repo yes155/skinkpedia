@@ -3,3 +3,4 @@ mistune
 pyyaml
 beautifulsoup4
 pillow
+reportlab
