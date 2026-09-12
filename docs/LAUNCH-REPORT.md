@@ -16,7 +16,7 @@ This report applies the Skink project prelaunch operating system and the semanti
 | Technical retrieval efficiency | Static output, reproducible build, generated sitemap with lastmod, robots.txt, 404, QA gates, no CMS runtime dependency. | 14/15 | Pass |
 | Ontological mapping / entities | Entity registry exists. Article and recipe JSON-LD are enriched with linked `about` and `mentions` entities. Major skink taxa are connected to public entity records where exact matches are available. | 14/15 | Pass |
 | Information architecture | URLs are hub/cluster aligned. New species pages belong under Biology. Peripheral Cullen skink content is separated from reptile topical flow. | 14/15 | Pass |
-| Answer-first / retrieval readiness | Article pages now render a visible `Quick answer` extraction block immediately after H1/byline and before the hero/body. QA fails if the block is missing, too short, or below the hero/body. | 14/15 | Pass |
+| Answer-first / retrieval readiness | Article pages render a visible `At a glance` extraction block as the first element inside the article body, after the hero image and beside the table of contents. QA fails if the block is missing, too short, or placed outside the article-body opening position. | 14/15 | Pass |
 | Metadata / media context | Canonicals, title overrides, OG/Twitter metadata, hero alt text, image mapping, and cache-busted hero rendering are handled by templates and generator. | 9/10 | Pass |
 | E-E-A-T / trust surface | About, Editorial Policy, Author, Reviewer, Sources, Corrections, Privacy, Affiliate Disclosure, and Contact pages exist. Visible bylines/reviewer links and dates are present. | 14/15 | Pass |
 | Structured data / quality | Article, Recipe, WebPage, WebSite, Organization, ProfilePage, Person, BreadcrumbList, and Taxon data are generated and validated by SEO QA. | 14/15 | Pass |
@@ -28,8 +28,8 @@ This report applies the Skink project prelaunch operating system and the semanti
 ## Implemented hard launch gates
 
 - `build/build.py` generates 55 articles, 9 trust pages, homepage, sitemap, robots, llms.txt, and structured data.
-- `templates/article.html` renders a visible answer-first extraction block above the hero image and article body.
-- `public/assets/css/answer-first.css` styles the extraction block without changing the main article copy.
+- `templates/article.html` renders a visible answer-first extraction block inside the article body after the hero image.
+- `public/assets/css/answer-first.css` styles the extraction block as a compact in-flow summary rather than a disruptive top-of-page callout.
 - `build/qa.py` checks hard content, asset, answer-first extraction, internal linking, reference-link, and output integrity requirements.
 - `build/seo_qa.py` runs final technical SEO validation and triggers entity graph enrichment before validation.
 - `build/entity_graph.py` enriches JSON-LD, appends the entity summary to `llms.txt`, writes `/entity-graph.json`, and injects sitemap `lastmod` values.
@@ -44,7 +44,7 @@ Cullen skink is handled as a food entity, not a reptile entity, to prevent knowl
 
 ## Answer-first extraction notes
 
-Every article page now places a concise `Quick answer` block near the top of the HTML, after the article title/byline and before the hero image, table of contents, and article body. This improves candidate-passage extraction for Google AI Overviews, ChatGPT-style retrieval, Perplexity-style citation, and ordinary featured-snippet style scanning.
+Every article page now places a concise `At a glance` block at the start of the readable article column, after the hero image and beside the table of contents. This keeps the visual flow natural while still putting a self-contained answer near the top of the HTML content area for featured-snippet style scanning, Google AI Overviews, ChatGPT-style retrieval, and Perplexity-style citation.
 
 The block is generated from the page's already-approved description/source text rather than introducing new unsupported claims. Deeper article sections still carry the nuance, species scope, exceptions, warnings, and evidence.
 
