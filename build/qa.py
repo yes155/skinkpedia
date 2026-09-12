@@ -42,21 +42,23 @@ for f in html:
     article=s.select_one('.article-layout')
     if article:
         article_pages += 1
-        answer=article.select_one('.answer-first[data-extraction-target="answer-first"]')
+        body=s.select_one('.article-body')
+        answer=body.select_one('.answer-first[data-extraction-target="answer-first"]') if body else None
         if not answer:
             errs.append(f'{f}: missing answer-first extraction block')
         else:
             answer_blocks += 1
             answer_text=' '.join(answer.get_text(' ',strip=True).split())
-            if not answer_text.lower().startswith('quick answer'):
-                errs.append(f'{f}: answer-first block does not start with Quick answer label')
-            if len(answer_text)<115:
+            if not answer_text.lower().startswith('at a glance'):
+                errs.append(f'{f}: answer-first block does not start with At a glance label')
+            if len(answer_text)<95:
                 errs.append(f'{f}: answer-first block too short ({len(answer_text)} chars)')
+            body_children=[c for c in body.children if getattr(c,'name',None)] if body else []
+            if not body_children or body_children[0] is not answer:
+                errs.append(f'{f}: answer-first block is not the first article-body element')
             art_html=str(article)
-            if 'class="answer-first' in art_html and 'class="article-hero' in art_html and art_html.find('class="answer-first')>art_html.find('class="article-hero'):
-                errs.append(f'{f}: answer-first block appears after hero image')
-            if 'class="answer-first' in art_html and 'class="article-body' in art_html and art_html.find('class="answer-first')>art_html.find('class="article-body'):
-                errs.append(f'{f}: answer-first block appears after article body')
+            if 'class="answer-first' in art_html and 'class="article-hero' in art_html and art_html.find('class="answer-first') < art_html.find('class="article-hero'):
+                errs.append(f'{f}: answer-first block appears before hero image')
         related=article.select_one('.related-block')
         if not related:
             errs.append(f'{f}: missing Related guides block')
@@ -65,7 +67,6 @@ for f in html:
             related_links=related.select('.link-card a[href^="/"]')
             if len(related_links)<2: errs.append(f'{f}: Related guides has fewer than 2 internal cards')
 
-        body=s.select_one('.article-body')
         page_has_refs=False
         if body:
             for heading in body.find_all(['h2','h3']):
