@@ -15,14 +15,14 @@ python build/seo_qa.py
 
 Build output: `dist/`
 
-## Cloudflare Pages
+## Cloudflare Pages / Workers Assets
 
 - **Framework preset:** None / static site
 - **Build command:** `pip install -r requirements.txt && python build/build.py && python build/qa.py && python build/seo_qa.py`
 - **Build output directory:** `dist`
 - **Root directory:** repository root
 
-The QA commands intentionally fail the deployment when hard content, asset, linking or technical-SEO gates fail.
+The QA commands intentionally fail the deployment when hard content, asset, linking, schema, entity-graph, sitemap, or technical-SEO gates fail.
 
 ## Production domain
 
@@ -34,14 +34,27 @@ If the final domain is different, update `SITE_URL` in `build/config.py` before 
 
 ## Included
 
-- 53 topical-map articles
-- 53 mapped hero images
-- 7 trust pages
+- 55 topical-map articles
+- 55 mapped hero images
+- 9 trust pages
 - homepage
 - 404 page
-- sitemap.xml
+- sitemap.xml with canonical URLs and `lastmod`
 - robots.txt
 - llms.txt
-- Article / Recipe / Breadcrumb / Organization / Person schema
+- entity-graph.json
+- Article / Recipe / Breadcrumb / Organization / WebSite / WebPage / ProfilePage / Person / Taxon schema
+- author and reviewer profile schema with images and sameAs links
+- Taxon/entity registry with public knowledge-graph links where exact matches are available
 - automated general QA
 - automated technical SEO QA
+- automated entity-graph enrichment and validation
+
+## Final launch workflow
+
+1. Build the static site.
+2. Run general QA.
+3. Enrich generated HTML with entity graph data during SEO QA.
+4. Verify schema, canonicals, sitemap, robots.txt, llms.txt, `entity-graph.json`, dates, and linked entities.
+5. Deploy the `dist/` output.
+6. Submit `https://skinkpedia.online/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
