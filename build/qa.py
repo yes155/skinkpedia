@@ -17,6 +17,8 @@ for f in html:
     elif rel.name=='404.html': url='/404.html'
     else: url='/'+str(rel).replace('\\','/')
     paths.add(url)
+# /resources/ is generated during SEO QA after general QA, but it is already linked from the shared navigation.
+paths.add('/resources/')
 for f in html:
     if f.name=='404.html': continue
     s=BeautifulSoup(f.read_text(encoding='utf-8'),'html.parser')
