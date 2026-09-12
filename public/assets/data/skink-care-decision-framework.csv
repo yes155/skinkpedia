@@ -1,0 +1,7 @@
+decision_area,question,safe_default,next_action,risk_if_ignored
+Species ID,Do you know the exact species or species group?,Do not buy equipment from a generic skink list until the species is known,Use species guide and confirm legal/source status,Wrong humidity temperature substrate or enclosure size
+Enclosure,Can the animal thermoregulate and hide?,Provide warm/cool zones multiple hides secure lid and species-suitable substrate,Test for several days before arrival,Stress escape overheating or chronic poor feeding
+Heating and UVB,Are temperatures measured at basking surface and cool end?,Use thermostat control and measured distances for heat and UVB,Log readings before feeding/handling decisions,Burns metabolic issues or poor digestion
+Humidity,Is humidity matched to locality/species rather than family name?,Use species-specific range and provide shed support,Track shed quality and adjust gradually,Respiratory or shedding problems
+Diet,Is the diet appropriate for age and species ecology?,Offer varied diet suited to omnivore/insectivore/herbivore tendencies,Record foods accepted and weight trend,Obesity malnutrition or feeding refusal
+Health triage,Is there breathing trouble injury severe lethargy or rapid weight loss?,Treat as a veterinary escalation not a web-diagnosis problem,Contact experienced reptile veterinarian,Delayed care for serious illness
