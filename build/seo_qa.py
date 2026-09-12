@@ -29,6 +29,7 @@ TRUST_PAGE_PATHS={
 }
 PROFILE_PREFIXES=('/authors/','/editors/')
 RECIPE_PATHS={'/extras/cullen-skink-recipe/'}
+DATE_RE=re.compile(r'^\d{4}-\d{2}-\d{2}$')
 
 
 def node_types(node):
@@ -148,6 +149,13 @@ try:
     if len(locs)!=expected_urls: errors.append(f'sitemap expected {expected_urls} URLs, found {len(locs)}')
     if len(locs)!=len(set(locs)): errors.append('sitemap contains duplicate URLs')
     if set(locs)!=set(canonicals): errors.append('sitemap URLs do not exactly match indexable canonicals')
+    for u in root.findall('s:url', ns):
+        loc = u.find('s:loc', ns)
+        lastmod = u.find('s:lastmod', ns)
+        if lastmod is None or not lastmod.text:
+            errors.append(f'sitemap URL missing lastmod: {loc.text if loc is not None else "unknown"}')
+        elif not DATE_RE.match(lastmod.text.strip()):
+            errors.append(f'sitemap URL invalid lastmod: {loc.text if loc is not None else "unknown"} -> {lastmod.text}')
 except Exception as e: errors.append(f'invalid sitemap: {e}')
 robots=(DIST/'robots.txt').read_text(encoding='utf-8')
 if f'Sitemap: {SITE_URL}/sitemap.xml' not in robots: errors.append('robots.txt sitemap mismatch')
@@ -156,6 +164,13 @@ r404=s404.find('meta',attrs={'name':'robots'})
 if not r404 or 'noindex' not in r404.get('content',''): errors.append('404 missing noindex')
 if not (DIST/'llms.txt').exists(): warnings.append('llms.txt missing')
 if not (DIST/'entity-graph.json').exists(): errors.append('entity-graph.json missing')
+else:
+    try:
+        entity_manifest=json.loads((DIST/'entity-graph.json').read_text(encoding='utf-8'))
+        if len(entity_manifest.get('pages',[])) != len(index_files):
+            errors.append('entity-graph.json page count does not match indexable pages')
+    except Exception as e:
+        errors.append(f'entity-graph.json invalid: {e}')
 
 print('SEO QA', 'PASS' if not errors else 'FAIL')
 print('Indexable pages:',len(index_files),'Article schema:',article_schema,'Recipe:',recipe_schema,'Breadcrumb:',breadcrumb_schema,'ProfilePage:',profile_schema)
